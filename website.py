@@ -5,7 +5,7 @@ elements = {}
 def create_canvas():
     canvas = document["canv"]
     ctx = canvas.getContext("webgl")
-    'canvas' not in elements:
+    if 'canvas' not in elements:
         elements['canvas'] = []
     elements['canvas'].append(canvas)
     ctx.clearColor(0, 0, 0, 0, 1)
