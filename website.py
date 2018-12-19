@@ -22,7 +22,7 @@ def draw_plane(point, unit_normal, height = 30, color = "red"):
 
     square.transform.translate(point[0], point[1], point[2])
     
-    b1 = unit_normal.cross((unit_normal + Vector(0.1, 0, 0)).normalized() )
+    b1 = unit_normal.cross((unit_normal + Vector(2, 0, 0)).normalized() )
     b2 = unit_normal.cross(b1)
 
     square.transform.rotate(b1[0], b1[1], b1[2], b2 * Vector(0, 0, 1))
@@ -46,7 +46,7 @@ def draw_elements(canvas, elements, bg_color = 'aliceblue'):
 def setup():
     canv = create_canvas()
     point = Vector(100, 200, 1)
-    unit_normal = Vector(-100, 100, 0)
+    unit_normal = Vector(-1, 1, 1)
     draw_plane(point, unit_normal)
     draw_elements(canv, graphic_elements)
 
