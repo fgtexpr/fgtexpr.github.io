@@ -1,5 +1,5 @@
 from browser import window, html, document
-from vector import Vector
+from Vector import Vector
 
 elements = dict()
 
