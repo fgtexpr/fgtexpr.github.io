@@ -1,4 +1,4 @@
-from browser import document, html, 
+from browser import document, html
 
 elements = {}
 
