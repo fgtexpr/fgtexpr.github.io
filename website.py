@@ -1,6 +1,6 @@
 from browser import document, html
 
-elements = {}
+elements = dict()
 
 def create_canvas():
     canvas = html.CANVAS(width = 680, height = 480)
