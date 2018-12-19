@@ -4,7 +4,6 @@ elements = dict()
 
 def create_canvas():
     canvas = html.CANVAS(width = 680, height = 480)
-    canvas.style = {'width = 100%'}
     ctx = canvas.getContext("webgl")
     if 'canvas' not in elements:
         elements['canvas'] = []
