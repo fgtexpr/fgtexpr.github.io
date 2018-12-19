@@ -15,7 +15,7 @@ def create_canvas():
     elements['canvas'].append(canvas)
     return canvas
 
-def draw_plane(point, unit_normal, height = 1, color = "red"):
+def draw_plane(point, unit_normal, height = 30, color = "red"):
     square = window.Shape3D.new(window.shapeDefs3D.square(height), 
             {'fillColor': color, 'backColor': color}
             )
@@ -36,7 +36,8 @@ def draw_plane(point, unit_normal, height = 1, color = "red"):
 
 def draw_elements(canvas, elements, bg_color = 'aliceblue'):
     canvas.setWorldCoords3D(0, 0, 0, 0)
-    canvas.setLightSource(0, 0, -100)
+    canvas.setPropertyDefaults("backgroundColor", bg_color)
+    canvas.setLightSource(0, 0, -300)
     for element_type in elements:
         for e in elements[element_type]:
             canvas.render(e)
