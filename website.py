@@ -25,7 +25,7 @@ def draw_plane(point, unit_normal, height = 30, color = "red"):
     b1 = unit_normal.cross((unit_normal + Vector(2, 0, 0)).normalized() )
     b2 = unit_normal.cross(b1)
 
-    square.transform.rotate(b1[0], b1[1], b1[2], b2 * Vector(0, 0, 1))
+    square.transform.rotate(b1[0], b1[1], b1[2], b2 * Vector(0, 1, 0))
     square.transform.rotate(b2[0], b2[1], b2[2], b1 * Vector(1, 0, 0))
     
     if 'square' not in graphic_elements:
