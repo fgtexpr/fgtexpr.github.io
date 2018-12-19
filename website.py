@@ -9,9 +9,9 @@ def create_canvas():
     if 'canvas' not in elements:
         elements['canvas'] = []
     n_canvs = len(elements['canvas'])
-    canvas = html.CANVAS(id = "canv_" + n_canvs, width = 680, height = 480)
+    canvas = html.CANVAS(id = "canv_" + str(n_canvs), width = 680, height = 480)
     document <= canvas
-    canvas = window.Cango3D.new("canv_" + n_canvs)
+    canvas = window.Cango3D.new("canv_" + str(n_canvs))
     elements['canvas'].append(canvas)
     return canvas
 
