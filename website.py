@@ -1,9 +1,10 @@
-from browser import document, html
+from browser import document, html, 
 
 elements = {}
 
 def create_canvas():
-    canvas = document["canv"]
+    canvas = html.CANVAS(width = 680, height = 480)
+    canvas.style = {'width = 100%'}
     ctx = canvas.getContext("webgl")
     if 'canvas' not in elements:
         elements['canvas'] = []
@@ -14,3 +15,5 @@ def create_canvas():
 
 
 canv = create_canvas()
+
+document <= canv
