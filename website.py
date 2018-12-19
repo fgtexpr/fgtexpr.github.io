@@ -1,5 +1,6 @@
 from browser import window, html, document
 from Vector import Vector
+import math
 
 elements = dict()
 
