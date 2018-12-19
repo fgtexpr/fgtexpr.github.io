@@ -45,8 +45,8 @@ def draw_elements(canvas, elements, bg_color = 'aliceblue'):
 
 def setup():
     canv = create_canvas()
-    point = Vector(5, 0, 1)
-    unit_normal = Vector(-1, 1, 0)
+    point = Vector(100, 300, 1)
+    unit_normal = Vector(-100, 100, 0)
     draw_plane(point, unit_normal)
     draw_elements(canv, graphic_elements)
 
