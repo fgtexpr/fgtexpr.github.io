@@ -36,7 +36,7 @@ def draw_plane(point, unit_normal, height = 30, color = "red"):
 
 def draw_elements(canvas, elements, bg_color = 'aliceblue'):
     canvas.setWorldCoords3D(0, 0, 0, 0)
-    canvas.setPropertyDefaults("backgroundColor", bg_color)
+    canvas.setPropertyDefault("backgroundColor", bg_color)
     canvas.setLightSource(0, 0, -300)
     for element_type in elements:
         for e in elements[element_type]:
