@@ -8,7 +8,7 @@ def create_canvas():
     if 'canvas' not in elements:
         elements['canvas'] = []
     elements['canvas'].append(canvas)
-    ctx.clearColor(0, 0, 0, 0, 1)
+    ctx.clearColor(1.0, 0.0, 0.0, 0.0, 1.0)
     ctx.clear(ctx.COLOR_BUFFER_BIT)
     return canvas
 
