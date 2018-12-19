@@ -1,7 +1,5 @@
 from browser import document, html
 
-global elements
-
 elements = {}
 
 def create_canvas():
