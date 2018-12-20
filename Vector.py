@@ -57,6 +57,10 @@ class Vector(object):
         subbed = map(sub, self.values, other.values)
         return Vector(*subbed)
     
+    def __mod__(self, other):
+        '''Returns self cross other'''
+        return self.cross(other)
+
     def __iter__(self):
         return self.values.__iter__()
     

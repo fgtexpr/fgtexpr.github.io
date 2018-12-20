@@ -23,11 +23,10 @@ def draw_plane(point, unit_normal, height = 30, color = "red"):
 
     square.transform.translate(point[0], point[1], point[2])
     
-    b1 = unit_normal.cross((unit_normal + Vector(2, 0, 0)).normalized() )
-    b2 = unit_normal.cross(b1)
+    axis = unit_normal % Vector(0, 0, 1)
+    angle = unit_normal * Vector(0, 0, 1)
 
-    square.transform.rotate(b1[0], b1[1], b1[2], math.acos(b2 * Vector(0, 1, 0)))
-    square.transform.rotate(b2[0], b2[1], b2[2], math.acos(b1 * Vector(1, 0, 0)))
+    square.transform.rotate(axis[0], axis[1], axis[2], angle)
     
     if 'square' not in graphic_elements:
         graphic_elements['square'] = []
@@ -38,7 +37,7 @@ def draw_plane(point, unit_normal, height = 30, color = "red"):
 def draw_elements(canvas, elements, bg_color = 'aliceblue'):
     canvas.setWorldCoords3D(0, 0, 500)
     canvas.setPropertyDefault("backgroundColor", bg_color)
-    canvas.setLightSource(0, 0, -300)
+    canvas.setLightSource(0, -100, 50)
     for element_type in elements:
         for e in elements[element_type]:
             canvas.render(e)
