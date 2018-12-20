@@ -84,6 +84,7 @@ def draw_elements(canvas, elements, bg_color = 'aliceblue'):
 
 
 def setup():
+    global canv
     canv = create_canvas()
     create_input('text', name = 'normal_input')
     create_input('text', name = 'point_input')
