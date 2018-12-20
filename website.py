@@ -38,7 +38,7 @@ def create_button(name = None):
     
     btn = html.BUTTON(id = name)
 
-    document <= button
+    document <= btn
     elements['button'].append(btn)
     return btn
 
