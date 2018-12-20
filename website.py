@@ -16,7 +16,7 @@ def create_canvas():
     elements['canvas'].append(canvas)
     return canvas
 
-def draw_plane(point, unit_normal, height = 30, color = "red"):
+def draw_plane(point, unit_normal, height = 30, color = "blue"):
     square = window.Shape3D.new(window.shapeDefs3D.square(height), 
             {'fillColor': color, 'backColor': color}
             )
@@ -46,7 +46,7 @@ def draw_elements(canvas, elements, bg_color = 'aliceblue'):
 def setup():
     canv = create_canvas()
     point = Vector(100, 200, 1)
-    unit_normal = Vector(-1, 1, 1)
+    unit_normal = Vector(0.5, 0.5, 0)
     draw_plane(point, unit_normal)
     draw_elements(canv, graphic_elements)
 
