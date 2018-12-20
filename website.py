@@ -6,6 +6,7 @@ elements = dict()
 
 graphic_elements = dict()
 
+canv = None
 def create_canvas(name = None):
     if 'canvas' not in elements:
         elements['canvas'] = []
