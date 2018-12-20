@@ -26,7 +26,7 @@ def draw_plane(point, unit_normal, height = 30, color = "blue"):
     axis = unit_normal % Vector(0, 0, 1)
     angle = unit_normal * Vector(0, 0, 1)
 
-    square.rotate(axis[0], axis[1], axis[2], math.degrees(math.acos(angle)))
+    square.rotate(axis[0], axis[1], axis[2], math.degrees(math.acos(angle)) )
     #square.rotate(1.0, 0.0, 0.0, math.radians(math.acos(angle)))
 
     if 'square' not in graphic_elements:
@@ -47,7 +47,7 @@ def draw_elements(canvas, elements, bg_color = 'aliceblue'):
 def setup():
     canv = create_canvas()
     point = Vector(100, 200, 1)
-    unit_normal = Vector(0.3, 0.3, 0.2)
+    unit_normal = Vector(0.3, 0.3, 0.2).normalized()
     draw_plane(point, unit_normal)
     draw_elements(canv, graphic_elements)
 
