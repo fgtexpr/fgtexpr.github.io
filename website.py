@@ -24,10 +24,10 @@ def draw_plane(point, unit_normal, height = 30, color = "blue"):
     square.transform.translate(point[0], point[1], point[2])
     
     phi = math.acos(unit_normal[2])
-    theta = math.cos(unit_normal[1]/math.sin(phi))
+    theta = math.acos(unit_normal[1]/math.sin(phi))
     
-    square.transform.rotate(0, 1, 0, theta)
-    square.transform.rotate(0, 0, 1, phi)
+    square.transform.rotate(0, 1, 0, math.degrees(theta))
+    square.transform.rotate(0, 0, 1, math.degrees(phi))
 
 
     if 'square' not in graphic_elements:
