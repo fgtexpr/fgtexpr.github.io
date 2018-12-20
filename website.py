@@ -26,8 +26,8 @@ def draw_plane(point, unit_normal, height = 30, color = "blue"):
     axis = unit_normal % Vector(0, 0, 1)
     angle = unit_normal * Vector(0, 0, 1)
 
-    #square.rotate(axis[0], axis[1], axis[2], math.acos(angle))
-    square.rotate(1, 0, 0, 2)
+    square.rotate(axis[0], axis[1], axis[2], math.acos(angle))
+    #square.rotate(1.0, 0.0, 0.0, math.radians(math.acos(angle)))
 
     if 'square' not in graphic_elements:
         graphic_elements['square'] = []
