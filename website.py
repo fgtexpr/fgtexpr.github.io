@@ -58,7 +58,7 @@ def draw_plane(point, unit_normal, height = 30, color = "blue"):
 
 
 
-    square = window.Shape3D.new(['M'] + list(p_ul) + ['l'] + list(p_ur) + list(p_lr) + list(p_ll) + ['z'], 
+    square = window.Shape3D.new(['M'] + list(p_ul) + ['l'] + list(p_ur) + ['l'] +list(p_lr) + ['l'] + list(p_ll) + ['z'], 
             {'fillColor': color, 'backColor': color}
             )
 
