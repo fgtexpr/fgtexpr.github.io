@@ -53,11 +53,7 @@ def draw_plane(point, unit_normal, height = 30, color = "blue"):
     p_ur = ur_corner - ( (ur_corner * unit_normal) * unit_normal)
     p_lr = lr_corner - ( (lr_corner * unit_normal) * unit_normal)
     p_ll = ll_corner - ( (ll_corner * unit_normal) * unit_normal)
-
-    
-
-
-
+ 
     square = window.Shape3D.new(['M'] + list(p_ul) + ['l'] + list(p_ur) + ['l'] +list(p_lr) + ['l'] + list(p_ll) + ['z'], 
             {'fillColor': color, 'backColor': color}
             )
@@ -75,7 +71,7 @@ def action_draw_plane(ev):
     point_in = list( map( float, document['point_input'].value.split(',')))
 
     normal = Vector(n_in[0], n_in[1], n_in[2]).normalized()
-    pt = Vector(point_in[0], point_in[1], point_in[2]).normalized()
+    pt = Vector(point_in[0], point_in[1], point_in[2])
     
     draw_plane(pt, normal, color = 'red')
     
