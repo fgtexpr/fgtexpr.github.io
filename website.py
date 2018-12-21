@@ -44,18 +44,25 @@ def create_button(name = None):
     return btn
 
 def draw_plane(point, unit_normal, height = 30, color = "blue"):
-    square = window.Shape3D.new(window.shapeDefs3D.square(height), 
+    ul_corner = Vector(-0.5,0.5,0)
+    ur_corner = Vector(0.5, 0.5, 0)
+    lr_corner = Vector(0.5, -0.5, 0)
+    ll_corner = Vector(-0.5, -0.5, 0)
+        
+    p_ul = ul_corner - ( (ul_corner * unit_normal) * unit_normal)
+    p_ur = ur_corner - ( (ur_corner * unit_normal) * unit_normal)
+    p_lr = lr_corner - ( (lr_corner * unit_normal) * unit_normal)
+    p_ll = ll_corner - ( (ll_corner * unit_normal) * unit_normal)
+
+    
+
+
+
+    square = window.Shape3D.new(['M'] + list(p_ul) + ['l'] + list(p_ur) + list(p_lr) + list(p_ll) + ['z'], 
             {'fillColor': color, 'backColor': color}
             )
 
     square.transform.translate(point[0], point[1], point[2])
-    
-    theta_x = math.asin(unit_normal * Vector(0, 1, 0))
-    theta_y = math.asin(unit_normal * Vector(1, 0, 0))
-    
-    square.transform.rotate(0, 1, 0, math.degrees(theta_x))
-    square.transform.rotate(1, 0, 0, math.degrees(theta_y))
-
 
     if 'square' not in graphic_elements:
         graphic_elements['square'] = []
@@ -69,7 +76,7 @@ def action_draw_plane(ev):
 
     normal = Vector(n_in[0], n_in[1], n_in[2]).normalized()
     pt = Vector(point_in[0], point_in[1], point_in[2]).normalized()
-
+    
     draw_plane(pt, normal, color = 'red')
     
     draw_elements(canv, graphic_elements)
