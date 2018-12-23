@@ -50,10 +50,10 @@ def draw_plane(point, unit_normal, height = 30, color = "blue"):
     ll_corner = Vector(-0.5, -0.5, 0)
     unit_normal = unit_normal.normalized()
     
-    ul = ul_corner - ( (ul_corner * unit_normal) * unit_normal)
-    ur = ur_corner - ( (ur_corner * unit_normal) * unit_normal)
-    lr = lr_corner - ( (lr_corner * unit_normal) * unit_normal)
-    ll = ll_corner - ( (ll_corner * unit_normal) * unit_normal)
+    ul = ul_corner - ( unit_normal * (ul_corner * unit_normal))
+    ur = ur_corner - ( unit_normal * (ur_corner * unit_normal))
+    lr = lr_corner - ( unit_normal * (lr_corner * unit_normal))
+    ll = ll_corner - ( unit_normal * (ll_corner * unit_normal))
  
     square = window.Shape3D.new(['M'] + list(ul) + ['l'] + list(ur) + list(lr) + list(ll) + ['z'], 
             {'fillColor': color, 'backColor': color}
