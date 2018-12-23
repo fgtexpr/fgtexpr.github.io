@@ -23,7 +23,7 @@ def graph_to_canv(g_coord):
 
 def canv_to_graph(c_coord):
     scale = canv_options['scale']
-    offset = canv_options['offset']
+    offset = canv_options['height']
     return (c_coord - Vector(1,1,1)*(offset/2))*(1/scale)
 
 def create_canvas(name = None):
@@ -100,7 +100,7 @@ def action_draw_plane(ev):
     draw_elements(canv, graphic_elements)
 
 def draw_elements(canvas, elements, bg_color = 'aliceblue'):
-    canvas.setWorldCoords3D(0, 0, canvas['width'])
+    canvas.setWorldCoords3D(0, 0, canv_options['width'])
     canvas.setPropertyDefault("backgroundColor", bg_color)
     canvas.setLightSource(0, -100, 50)
     for element_type in elements:
