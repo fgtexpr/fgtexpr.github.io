@@ -52,7 +52,7 @@ def draw_plane(point, unit_normal, height = 30, color = "blue"):
     unit_normal = unit_normal.normalized()
     alert('0')
     alert(str(ul_corner * unit_normal))
-    alert(str((ul_corner * unit_normal) * unit_normal))
+    alert(str(unit_normal * (ul_corner * unit_normal)))
     alert(str(ul_corner - (ul_corner * unit_normal) * unit_normal))
     
     ul = ul_corner - (ul_corner * unit_normal) * unit_normal
