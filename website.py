@@ -95,7 +95,7 @@ def setup():
     create_input('text', name = 'point_input')
     create_button().bind('click', action_draw_plane)
     point = Vector(100, 200, 1)
-    unit_normal = Vector(0.1, 0.2, 0.4).normalized()
+    unit_normal = Vector(0.1, 0.2, 0).normalized()
     draw_plane(point, unit_normal)
     draw_elements(canv, graphic_elements)
     
