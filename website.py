@@ -48,13 +48,13 @@ def draw_plane(point, unit_normal, height = 30, color = "blue"):
     ur_corner = Vector(0.5, 0.5, 0)
     lr_corner = Vector(0.5, -0.5, 0)
     ll_corner = Vector(-0.5, -0.5, 0)
-    alert('goo')
+    
     unit_normal = unit_normal.normalized()
-    alert('glordle')
-    ul = ul_corner -  (ul_corner * unit_normal) * unit_normal 
-    ur = ur_corner -  (ur_corner * unit_normal) * unit_normal 
-    lr = lr_corner -  (lr_corner * unit_normal) * unit_normal 
-    ll = ll_corner -  (ll_corner * unit_normal) * unit_normal 
+    
+    ul = ul_corner - (ul_corner * unit_normal) * unit_normal 
+    ur = ur_corner - (ur_corner * unit_normal) * unit_normal 
+    lr = lr_corner - (lr_corner * unit_normal) * unit_normal 
+    ll = ll_corner - (ll_corner * unit_normal) * unit_normal 
     alert('snorg')
     inp = ['M', 2,-2,0, 'l',0,4,0, -4,0,0, 0,-4,0, 'z']
     alert('glorp')
