@@ -51,9 +51,12 @@ def draw_plane(point, unit_normal, height = 30, color = "blue"):
     
     unit_normal = unit_normal.normalized()
     
-    ul = ul_corner - (ul_corner * unit_normal) * unit_normal 
+    ul = ul_corner - (ul_corner * unit_normal) * unit_normal
+    alert('1')
     ur = ur_corner - (ur_corner * unit_normal) * unit_normal 
+    alert('2')
     lr = lr_corner - (lr_corner * unit_normal) * unit_normal 
+    alert('3')
     ll = ll_corner - (ll_corner * unit_normal) * unit_normal 
     alert('snorg')
     inp = ['M', 2,-2,0, 'l',0,4,0, -4,0,0, 0,-4,0, 'z']
