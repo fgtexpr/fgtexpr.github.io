@@ -95,7 +95,7 @@ def action_draw_plane(ev):
     normal = Vector(n_in[0], n_in[1], n_in[2]).normalized()
     pt = Vector(point_in[0], point_in[1], point_in[2])
     
-    draw_plane(pt, normal, color = 'red', height = canv_options['height'])
+    draw_plane(pt, normal, color = 'red', height = canv_options['scale'])
     
     draw_elements(canv, graphic_elements)
 
