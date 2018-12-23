@@ -7,12 +7,31 @@ elements = dict()
 graphic_elements = dict()
 
 canv = None
+
+canv_options = {
+    'width': 680,
+    'height': 680,
+    'origin': Vector(0, 0, 0),
+    'lightSrc': Vector(300, 300, -10),
+    'scale': 20
+}
+
+def graph_to_canv(g_coord):
+    scale = canv_options['scale']
+    offset = canv_options['height']
+    return g_coord*scale + Vector(1, 1, 1)*offset/2
+
+def canv_to_graph(c_coord):
+    scale = canv_options['scale']
+    offset = canv_options['offset']
+    return (c_coord - Vector(1,1,1)*offset/2)*(1/scale)
+
 def create_canvas(name = None):
     if 'canvas' not in elements:
         elements['canvas'] = []
     if name == None:
         name = 'canv_' + str(len(elements['canvas']))
-    canvas = html.CANVAS(id = name, width = 680, height = 480)
+    canvas = html.CANVAS(id = name, width = canv_options['width'], height = canv_options['height'])
     document <= canvas
     canvas = window.Cango3D.new(name)
     elements['canvas'].append(canvas)
@@ -44,6 +63,7 @@ def create_button(name = None):
     return btn
 
 def draw_plane(point, unit_normal, height = 30, color = "blue"):
+    point = graph_to_canv(point)
     ul_corner = Vector(-0.5, 0.5, 0)*height
     ur_corner = Vector(0.5, 0.5, 0)*height
     lr_corner = Vector(0.5, -0.5, 0)*height
@@ -75,12 +95,12 @@ def action_draw_plane(ev):
     normal = Vector(n_in[0], n_in[1], n_in[2]).normalized()
     pt = Vector(point_in[0], point_in[1], point_in[2])
     
-    draw_plane(pt, normal, color = 'red')
+    draw_plane(pt, normal, color = 'red', height = canv_options['height'])
     
     draw_elements(canv, graphic_elements)
 
 def draw_elements(canvas, elements, bg_color = 'aliceblue'):
-    canvas.setWorldCoords3D(0, 0, 500)
+    canvas.setWorldCoords3D(0, 0, canvas['width'])
     canvas.setPropertyDefault("backgroundColor", bg_color)
     canvas.setLightSource(0, -100, 50)
     for element_type in elements:
@@ -98,7 +118,6 @@ def setup():
     unit_normal = Vector(0.1, 0.2, 0).normalized()
     draw_plane(point, unit_normal)
     draw_elements(canv, graphic_elements)
-    alert('big boi')
 
 
 setup()
