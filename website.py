@@ -44,10 +44,10 @@ def create_button(name = None):
     return btn
 
 def draw_plane(point, unit_normal, height = 30, color = "blue"):
-    ul_corner = Vector(-0.5, 0.5, 0)
-    ur_corner = Vector(0.5, 0.5, 0)
-    lr_corner = Vector(0.5, -0.5, 0)
-    ll_corner = Vector(-0.5, -0.5, 0)
+    ul_corner = Vector(-0.5, 0.5, 0)*height
+    ur_corner = Vector(0.5, 0.5, 0)*height
+    lr_corner = Vector(0.5, -0.5, 0)*height
+    ll_corner = Vector(-0.5, -0.5, 0)*height
     
     unit_normal = unit_normal.normalized()
     
