@@ -13,7 +13,7 @@ canv_options = {
     'height': 680,
     'origin': Vector(0, 0, 0),
     'lightSrc': Vector(300, 300, -10),
-    'scale': 5
+    'scale': 20
 }
 
 def graph_to_canv(g_coord):
