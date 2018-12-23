@@ -50,13 +50,13 @@ def draw_plane(point, unit_normal, height = 30, color = "blue"):
     ll_corner = Vector(-0.5, -0.5, 0)
     unit_normal = unit_normal.normalized()
     
-    ul = ul_corner - ( (ul_corner * unit_normal) * unit_normal ) 
+    ul = ul_corner - ( (ul_corner * unit_normal) * unit_normal )
     ur = ur_corner - ( (ur_corner * unit_normal) * unit_normal )
     lr = lr_corner - ( (lr_corner * unit_normal) * unit_normal )
     ll = ll_corner - ( (ll_corner * unit_normal) * unit_normal )
-    
 
-    square = window.Path3D.new(['M', 2,-2,0, 'l',0,4,0, -4,0,0, 0,-4,0, 'z'], {fillColor: 'pink'})
+    inp = ['M', 2,-2,0, 'l',0,4,0, -4,0,0, 0,-4,0, 'z']
+    square = window.Path3D.new(inp, {fillColor: 'pink'})
 
     #square = window.Shape3D.new(['M', ul[0], ul[1], ul[2], 'l', ur[0], ur[1], ur[2], lr[0], lr[1], lr[2], ll[0], ll[1], ll[2], 'z'], 
     #        {'fillColor': color, 'backColor': color}
