@@ -50,31 +50,20 @@ def draw_plane(point, unit_normal, height = 30, color = "blue"):
     ll_corner = Vector(-0.5, -0.5, 0)
     
     unit_normal = unit_normal.normalized()
-    alert('0')
-    alert(str(ul_corner * unit_normal))
-    alert(str(unit_normal * (ul_corner * unit_normal)))
     alert(str(ul_corner - unit_normal * (ul_corner * unit_normal)))
     
-    ul = ul_corner - (ul_corner * unit_normal) * unit_normal
-    alert('1')
-    ur = ur_corner - (ur_corner * unit_normal) * unit_normal 
-    alert('2')
-    lr = lr_corner - (lr_corner * unit_normal) * unit_normal 
-    alert('3')
-    ll = ll_corner - (ll_corner * unit_normal) * unit_normal 
+    ul = ul_corner - unit_normal * (ul_corner * unit_normal)
+    ur = ur_corner - unit_normal * (ur_corner * unit_normal)
+    lr = lr_corner - unit_normal * (lr_corner * unit_normal)
+    ll = ll_corner - unit_normal * (ll_corner * unit_normal)
     alert('snorg')
-    inp = ['M', 2,-2,0, 'l',0,4,0, -4,0,0, 0,-4,0, 'z']
+
+    square = window.Shape3D.new(['M', ul[0], ul[1], ul[2], 'l', ur[0], ur[1], ur[2], lr[0], lr[1], lr[2], ll[0], ll[1], ll[2], 'z'], 
+            {'fillColor': color, 'backColor': color}
+            )
     alert('glorp')
-    alert(inp)
-    alert('noorg')
-    square = window.Shape3D.new(window.shapeDefs3D.square(height), {fillColor: 'pink'})
-
-    #square = window.Shape3D.new(['M', ul[0], ul[1], ul[2], 'l', ur[0], ur[1], ur[2], lr[0], lr[1], lr[2], ll[0], ll[1], ll[2], 'z'], 
-    #        {'fillColor': color, 'backColor': color}
-    #        )
-
     square.transform.translate(point[0], point[1], point[2])
-
+    alert('gloop')
     if 'square' not in graphic_elements:
         graphic_elements['square'] = []
 
@@ -109,7 +98,6 @@ def setup():
     create_button().bind('click', action_draw_plane)
     point = Vector(100, 200, 1)
     unit_normal = Vector(0.1, 0.2, 0.4).normalized()
-    alert('ahh')
     draw_plane(point, unit_normal)
     draw_elements(canv, graphic_elements)
     
