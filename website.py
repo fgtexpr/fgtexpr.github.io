@@ -19,12 +19,12 @@ canv_options = {
 def graph_to_canv(g_coord):
     scale = canv_options['scale']
     offset = canv_options['height']
-    return g_coord*scale + Vector(1, 1, 1)*(offset/2)
+    return g_coord*scale + Vector(1, 1, 0)*(offset/2)
 
 def canv_to_graph(c_coord):
     scale = canv_options['scale']
     offset = canv_options['height']
-    return (c_coord - Vector(1,1,1)*(offset/2))*(1/scale)
+    return (c_coord - Vector(1,1,0)*(offset/2))*(1/scale)
 
 def create_canvas(name = None):
     if 'canvas' not in elements:
@@ -118,6 +118,6 @@ def setup():
     unit_normal = Vector(0.1, 0.2, 0).normalized()
     draw_plane(point, unit_normal)
     draw_elements(canv, graphic_elements)
-
+    alert('test')
 
 setup()
