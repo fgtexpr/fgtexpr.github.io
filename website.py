@@ -13,7 +13,7 @@ canv_options = {
     'height': 680,
     'origin': Vector(0, 0, 0),
     'lightSrc': Vector(300, 300, -10),
-    'scale': 20
+    'scale': 5
 }
 
 def graph_to_canv(g_coord):
@@ -118,6 +118,6 @@ def setup():
     unit_normal = Vector(0.1, 0.2, 0).normalized()
     draw_plane(point, unit_normal)
     draw_elements(canv, graphic_elements)
-    alert('test')
+    alert('testies')
 
 setup()
