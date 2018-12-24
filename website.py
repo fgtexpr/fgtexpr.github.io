@@ -113,7 +113,7 @@ def draw_axis(x_min, x_max, y_min, y_max, z_min, z_max):
         path[5 + i] = pair[1]*canv_options['scale']
         alert(path)
         alert('blamo')
-        path = window.Path3D.new(path, {'fillColor': 'blue'})
+        path = window.Path3D.new(path, {'lineWidth': 5, 'strokeColor': 'red'})
         alert(path)
         graphic_elements['axis'].append(path)
 
