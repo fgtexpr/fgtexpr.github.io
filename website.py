@@ -127,9 +127,8 @@ def setup():
     create_button().bind('click', action_draw_plane)
     point = Vector(100, 200, 1)
     unit_normal = Vector(0.1, 0.2, 0).normalized()
-    draw_plane(point, unit_normal)
-    draw_elements(canv, graphic_elements)
     draw_patch(canv, Sphere())
-    alert('testies')
+    draw_elements(canv, graphic_elements)
+    alert('testies1')
 
 setup()
