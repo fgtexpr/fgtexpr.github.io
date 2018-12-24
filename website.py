@@ -107,6 +107,8 @@ def draw_axis(x_min, x_max, y_min, y_max, z_min, z_max):
     for i, pair in enumerate([(x_min, x_max),(y_min, y_max), (z_min,z_max)]):
         #create main axis line
         path = ['M', 0, 0, 0, 'L', 0, 0, 0, 'Z']
+        alert(path)
+        alert(pair[0]*canv_options['scale'])
         path[1 + i] = pair[0]*canv_options['scale']
         path[5 + i] = pair[1]*canv_options['scale']
         alert(path)
