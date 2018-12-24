@@ -13,10 +13,9 @@ class Patch:
 
     
     def uVelocity(self, point):
-        return (1/self._delta) * (self.call(point + Vector(0, 1)*self._delta) - self.call(point))
-    
+        return  (self.call(point + Vector(0, 1)*self._delta) - self.call(point)) * (1/self._delta) 
     def vVelocity(self, point):
-        return (1/self._delta) * (self.call(point + Vector(1, 0)*self._delta) - self.call(point))
+        return (self.call(point + Vector(1, 0)*self._delta) - self.call(point)) * (1/self._delta)
     
     def unitNormalR(self, point):
         return self.uVelocity(point).cross(self.vVelocity(point)).normalized()
@@ -38,7 +37,7 @@ class Patch:
         sample = [None for _ in range(n_samples)]
         for i in range(n_samples):
             angle = i*(math.pi*2/n_samples)
-            sample[i] = math.sin(angle)*basis[0] + math.cos(angle)*basis[1]
+            sample[i] = basis[0]*math.sin(angle) + basis[1]*math.cos(angle)
         return sample
     
     
@@ -62,7 +61,7 @@ class Patch:
     
     def tangentSpaceProjection(self, point, vec):
         normal = self.unitNormalR(point)
-        return vec - ( vec*normal )*normal
+        return vec - normal * ( vec*normal )
         
     
     def inverseOfQAroundP(self, pinv, p, q):
