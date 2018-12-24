@@ -103,13 +103,15 @@ def action_draw_plane(ev):
 def draw_patch(canvas, patch, us = 0, ue = 1, vs = 0, ve = 1, delta = 0.1, color = 'red'):
     uw = int((ue - us) / delta)
     vw = int((ve - vs) / delta)
-    
+    alert(uw)
+    alert(vw)
     uv_points = [(us + u*delta, vs + v*delta) for u in range(uw) for v in range(vw)]
     xyz_points = list(map(lambda x: patch.call(Vector(x[0], x[1])), uv_points))
     normals = list(map(lambda x: patch.unitNormalR(Vector(x[0], x[1])), uv_points))
     height = delta*canv_options['scale']
-    map(lambda x, y: draw_plane(x, y, height = height, color = color), xyz_points, uv_points)
-    map(lambda x: alert(x), xyz_points[:10])
+    list(map(lambda x, y: draw_plane(x, y, height = height, color = color), xyz_points, uv_points))
+    list(map(lambda x: alert(x), xyz_points[:10]))
+
 def draw_elements(canvas, elements, bg_color = 'aliceblue'):
     canvas.setWorldCoords3D(0, 0, canv_options['width'])
     canvas.setPropertyDefault("backgroundColor", bg_color)
@@ -117,7 +119,6 @@ def draw_elements(canvas, elements, bg_color = 'aliceblue'):
     for element_type in elements:
         for e in elements[element_type]:
             canvas.render(e)
-
 
 def setup():
     global canv
@@ -127,6 +128,6 @@ def setup():
     create_button().bind('click', action_draw_plane)
     draw_patch(canv, Sphere())
     draw_elements(canv, graphic_elements)
-    alert('testies12')
+    alert('ttesties12')
 
 setup()
