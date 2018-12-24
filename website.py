@@ -107,13 +107,11 @@ def draw_axis(x_min, x_max, y_min, y_max, z_min, z_max):
     for i, pair in enumerate([(x_min, x_max),(y_min, y_max), (z_min,z_max)]):
         #create main axis line
         path = ['M', 0, 0, 0, 'L', 0, 0, 0, 'Z']
-        path[1 + i] = graph_to_canv(pair[0])
-        path[5 + i] = graph_to_canv(pair[1])
-        
+        path[1 + i] = pair[0]*canv_options['scale']
+        path[5 + i] = pair[1]*canv_options['scale']
+        alert(path)
         path = window.Path3D.new(path, {'fillColor': 'blue'})
         graphic_elements['axis'].append(path)
-
-
 
 def draw_patch(canvas, patch, us = 0, ue = 1, vs = 0, ve = 1, delta = 0.1, color = 'red'):
     uw = int((ue - us) / delta)
@@ -141,8 +139,9 @@ def setup():
     create_button().bind('click', action_draw_plane)
     alert('wham')
     draw_axis(0, 10, 0, 10, 0, 10)
+    alert('blammmm')
     draw_patch(canv, Sphere(), us = 0, ue = 1, vs = 0, ve = 1, delta = 0.1, color = "red")
     draw_elements(canv, graphic_elements)
-    alert('ttttttesties123')
+    alert('ttttesties123')
 
 setup()
