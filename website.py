@@ -71,7 +71,6 @@ def draw_plane(point, unit_normal, height = 30, color = "blue"):
     ll_corner = Vector(-0.5, -0.5, 0)*height
     
     unit_normal = unit_normal.normalized()
-    
     ul = ul_corner - unit_normal * (ul_corner * unit_normal)
     ur = ur_corner - unit_normal * (ur_corner * unit_normal)
     lr = lr_corner - unit_normal * (lr_corner * unit_normal)
@@ -138,8 +137,8 @@ def setup():
     create_button().bind('click', action_draw_plane)
     draw_axis(0, 10, 0, 10, 0, 10)
     alert('blammmmadoo')
-    draw_patch(canv, Sphere(), us = 0, ue = 1, vs = 0, ve = 1, delta = 0.1, color = "red")
-    draw_elements(canv, graphic_elements)
+    draw_patch(canv, Sphere(), us = 0, ue = 3.14, vs = 0, ve = 3.14, delta = 0.1, color = "red")
+    draw_elements(canv, graphic_elements
     alert('tttt')
 
 setup()
