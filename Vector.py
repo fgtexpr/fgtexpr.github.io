@@ -15,6 +15,8 @@ class Vector(object):
     def normalized(self):
         """ Returns a normalized unit vector """
         magnitude = self.mag()
+        if magnitude == 0:
+            return Vector(*self.values)
         normed = map(lambda x: x / magnitude, self.values)
         return Vector(*normed)
         
