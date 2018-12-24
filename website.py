@@ -136,8 +136,8 @@ def setup():
     create_input('text', name = 'point_input')
     create_button().bind('click', action_draw_plane)
     draw_axis(0, 10, 0, 10, 0, 10)
-    alert('shladoop')
-    draw_patch(canv, Sphere(), us = 0, ue = 6.28, vs = -1, ve = 1, delta = 0.1, color = "red")
+    alert('fladoop')
+    draw_patch(canv, Sphere(), us = 0, ue = 6.1, vs = -1, ve = 1, delta = 0.1, color = "red")
     draw_elements(canv, graphic_elements)
     alert('tttt')
 
