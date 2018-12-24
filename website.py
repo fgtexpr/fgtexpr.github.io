@@ -136,9 +136,9 @@ def setup():
     create_input('text', name = 'point_input')
     create_button().bind('click', action_draw_plane)
     draw_axis(0, 10, 0, 10, 0, 10)
-    alert('blammmmadoo')
+    alert('blammmmadoozzzzieee')
     draw_patch(canv, Sphere(), us = 0, ue = 3.14, vs = 0, ve = 3.14, delta = 0.1, color = "red")
-    draw_elements(canv, graphic_elements
+    draw_elements(canv, graphic_elements)
     alert('tttt')
 
 setup()
