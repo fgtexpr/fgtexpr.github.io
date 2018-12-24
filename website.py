@@ -137,7 +137,7 @@ def setup():
     create_button().bind('click', action_draw_plane)
     draw_axis(0, 10, 0, 10, 0, 10)
     alert('fladookie')
-    draw_patch(canv, Sphere(), us = 0, ue = 6.1, vs = -1, ve = 1, delta = 0.1, color = "red")
+    draw_patch(canv, Sphere(), us = 0, ue = 6.1, vs = 0, ve = 3.14, delta = 0.1, color = "red")
     draw_elements(canv, graphic_elements)
     alert('tttt')
 
