@@ -14,7 +14,7 @@ canv_options = {
     'height': 680,
     'origin': Vector(0, 0, 0),
     'lightSrc': Vector(300, 300, -10),
-    'scale': 20
+    'scale': 50
 }
 
 def graph_to_canv(g_coord):
@@ -100,7 +100,7 @@ def action_draw_plane(ev):
     
     draw_elements(canv, graphic_elements)
 
-def draw_patch(canvas, patch, us = 0, ue = 1, vs = 0, ve = 1, delta = 0.1, color = 'blue'):
+def draw_patch(canvas, patch, us = 0, ue = 1, vs = 0, ve = 1, delta = 0.1, color = 'red'):
     uw = int((ue - us) / delta)
     vw = int((ve - vs) / delta)
     
@@ -130,6 +130,6 @@ def setup():
     draw_plane(point, unit_normal)
     draw_elements(canv, graphic_elements)
     draw_patch(canv, Sphere())
-    alert('testies32111')
+    alert('testies')
 
 setup()
