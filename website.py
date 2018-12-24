@@ -105,8 +105,8 @@ def draw_patch(canvas, patch, us = 0, ue = 1, vs = 0, ve = 1, delta = 0.1, color
     vw = int((ve - vs) / delta)
     
     uv_points = [(us + u*delta, vs + v*delta) for u in range(uw) for v in range(vw)]
-    xyz_points = list(map(lambda x: patch.call(x[0], x[1]), uv_points))
-    normals = list(map(lambda x: patch.unitNormalR(x[0], x[1]), uv_points))
+    xyz_points = list(map(lambda x: patch.call(Vector(x[0], x[1])), uv_points))
+    normals = list(map(lambda x: patch.unitNormalR(Vector(x[0], x[1])), uv_points))
     height = delta*canv_options['scale']
     map(lambda x, y: draw_plane(x, y, height = height, color = color), xyz_points, uv_points)
 
