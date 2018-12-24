@@ -109,9 +109,7 @@ def draw_axis(x_min, x_max, y_min, y_max, z_min, z_max):
         path = ['M', 0, 0, 0, 'L', 0, 0, 0]
         path[1 + i] = pair[0]*canv_options['scale']
         path[5 + i] = pair[1]*canv_options['scale']
-        alert('blam')
         Spath = window.Path3D.new(path)
-        alert(Spath)
         graphic_elements['axis'].append(Spath)
 
 def draw_patch(canvas, patch, us = 0, ue = 1, vs = 0, ve = 1, delta = 0.1, color = 'red'):
@@ -122,15 +120,15 @@ def draw_patch(canvas, patch, us = 0, ue = 1, vs = 0, ve = 1, delta = 0.1, color
     normals = list(map(lambda x: patch.unitNormalR(Vector(x[0], x[1])), uv_points))
     height = delta*canv_options['scale']
     list(map(lambda x, y: draw_plane(x, y, height = height, color = color), xyz_points, normals))
-    list(map(lambda x: alert(x), xyz_points[:10]))
 
 def draw_elements(canvas, elements, bg_color = 'aliceblue'):
     canvas.setWorldCoords3D(0, 0, canv_options['width'])
     canvas.setPropertyDefault("backgroundColor", bg_color)
     canvas.setLightSource(0, 0, -50)
+    
     for element_type in elements:
         for e in elements[element_type]:
-            canvas.render(e)
+            canvas.render(e, 'noclear')
 
 def setup():
     global canv
@@ -138,11 +136,10 @@ def setup():
     create_input('text', name = 'normal_input')
     create_input('text', name = 'point_input')
     create_button().bind('click', action_draw_plane)
-    alert('wham')
     draw_axis(0, 10, 0, 10, 0, 10)
-    alert('blammmm')
+    alert('blammmmadoo')
     draw_patch(canv, Sphere(), us = 0, ue = 1, vs = 0, ve = 1, delta = 0.1, color = "red")
     draw_elements(canv, graphic_elements)
-    alert('ttttesties123')
+    alert('tttt')
 
 setup()
