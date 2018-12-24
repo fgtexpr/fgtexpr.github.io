@@ -130,6 +130,6 @@ def setup():
     draw_plane(point, unit_normal)
     draw_elements(canv, graphic_elements)
     draw_patch(canv, Sphere())
-    alert('testies32')
+    alert('testies321')
 
 setup()
