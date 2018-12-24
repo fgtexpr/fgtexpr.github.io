@@ -1,5 +1,6 @@
 from browser import window, html, document, alert
 from Vector import Vector
+from sphere import Sphere
 import math
 
 elements = dict()
@@ -99,6 +100,16 @@ def action_draw_plane(ev):
     
     draw_elements(canv, graphic_elements)
 
+def draw_patch(canvas, patch, us = 0, ue = 1, vs = 0, ve = 1, delta = 0.1, color = 'blue'):
+    uw = int((ue - us) / delta)
+    vw = int((ve - vs) / delta)
+    
+    uv_points = [(us + u*delta, vs + v*delta) for u in range(uw) for v in range(vw)]
+    xyz_points = list(map(lambda x: patch.call(x[0], x[1]), uv_points))
+    normals = list(map(lambda x: patch.unitNormalR(x[0], x[1]), uv_points))
+    height = delta*canv_options['scale']
+    map(lambda x, y: draw_plane(x, y, height = height, color = color), xyz_points, uv_points)
+
 def draw_elements(canvas, elements, bg_color = 'aliceblue'):
     canvas.setWorldCoords3D(0, 0, canv_options['width'])
     canvas.setPropertyDefault("backgroundColor", bg_color)
@@ -118,6 +129,7 @@ def setup():
     unit_normal = Vector(0.1, 0.2, 0).normalized()
     draw_plane(point, unit_normal)
     draw_elements(canv, graphic_elements)
-    alert('testies123')
+    draw_patch(canv, Sphere())
+    alert('testies32')
 
 setup()
