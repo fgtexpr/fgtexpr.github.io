@@ -1,4 +1,5 @@
 from patch import Patch
+from Vector import Vector
 import math
 class Sphere(Patch):
     def __init__(self):
