@@ -6,9 +6,9 @@ class Sphere(Patch):
         super().__init__()
     
     def call(self, point):
-        u = point[0]
-        v = point[1]
-        x = v
-        y = math.cosh(v) * math.sin(u)
-        z = math.cosh(v) * math.cos(u)
+        phi = point[0]
+        theta = point[1]
+        x = math.cos(theta) * math.sin(phi)
+        y = math.sin(phi) * math.sin(theta)
+        z = math.cos(phi)
         return Vector(x, y, z)
