@@ -72,20 +72,44 @@ def create_function_from_input(inp):
         return exec(func_text)
     return call
 
-def create_patch(ev):
+def draw_patch(ev):
     fx = create_function_from_input('fx')
     fy = create_function_from_input('fy')
     fz = create_function_from_input('fz')
     pth = Patch.create(fx, fy, fz)
-    alert(pth(Vector(0,0)))
-    alert(pth(Vector(0,1)))
-    alert(pth(Vector(1,0)))
+    
+    u_min = document['umin'].value
+    u_max = document['umax'].value
+    v_min = document['vmin'].value
+    v_max = document['vmax'].value
+
+    u_step = document['ustep'].value
+    v_step = document['vstep'].value
+    
+    u_width = int((u_max - u_min)/u_step)
+    v_width = int((v_max - v_min)/v_step)
+
+    uv_points = [Vector(u_min + u_step*u, v_min + v_step*v) for u in range(u_width) for v in range(v_width)]
+    
+    xyz_points = [pth(pt) for pt in uv_points]
+    normals = [pth(pt) for pt in uv_points]
+    alert(xyz_points[0])
+    alert(xyz_points[1])
+    alert(normals[0])
+    alert(normals[1])
 
 def setup():
     ##Create inputs for fx, fy, fz
     create_input('text', 'fx')
     create_input('text', 'fy')
     create_input('text', 'fz')
-    create_button('go').bind('click', create_patch)
+    create_input('text', 'umin')
+    create_input('text', 'umax')
+    create_input('text', 'vmin')
+    create_input('text', 'vmax')
+    create_input('text', 'ustep')
+    create_input('text', 'vstep')
+
+    create_button('go').bind('click', draw_patch)
     
 setup()
