@@ -2,7 +2,7 @@ from browser import window, html, document, alert
 from Vector import Vector
 from sphere import Sphere
 import math
-
+from math import *
 elements = dict()
 
 graphic_elements = dict()
@@ -68,7 +68,6 @@ def draw_plane(point, unit_normal, height = 30, color = "blue"):
 
 def create_function_from_input(inp):
     func_text = document[inp].value
-    from math import *
     def call(u, v):
         return exec(func_text)
     return call
