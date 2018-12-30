@@ -1,6 +1,6 @@
 from browser import window, html, document, alert
 from Vector import Vector
-from sphere import Sphere
+from patch import Patch
 import math
 from math import *
 elements = dict()
