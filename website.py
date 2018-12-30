@@ -75,7 +75,7 @@ def render_as_planes(points, normals):
             verts[6*i + j] = point_verts[j]
     
     geometry = window.THREE.BufferGeometry.new()
-    geometry.addAttribute('position', window.THREE.BufferAttribute.new(verts, 3))
+    geometry.addAttribute('position', window.THREE.BufferAttribute.new(window.Float32Array.from(verts), 3))
     mat = window.THREE.MeshBasicMaterial.new( {'color': 0xff0000 } )
     mesh = window.THREE.Mesh.new(geometry, mat)
 
