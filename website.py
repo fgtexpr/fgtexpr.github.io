@@ -51,20 +51,43 @@ def create_button(name = None):
     elements['button'].append(btn)
     return btn
 
-def draw_plane(point, unit_normal, height = 30, color = "blue"):
-    point = graph_to_canv(point)
+def plane_vertices(point, unit_normal, height = 30, color = "blue"):
     ul_corner = Vector(-0.5, 0.5, 0)*height
     ur_corner = Vector(0.5, 0.5, 0)*height
     lr_corner = Vector(0.5, -0.5, 0)*height
     ll_corner = Vector(-0.5, -0.5, 0)*height
     
     unit_normal = unit_normal.normalized()
-    ul = ul_corner - unit_normal * (ul_corner * unit_normal)
-    ur = ur_corner - unit_normal * (ur_corner * unit_normal)
-    lr = lr_corner - unit_normal * (lr_corner * unit_normal)
-    ll = ll_corner - unit_normal * (ll_corner * unit_normal)
+    ul = point + ul_corner - unit_normal * (ul_corner * unit_normal)
+    ur = point + ur_corner - unit_normal * (ur_corner * unit_normal)
+    lr = point + lr_corner - unit_normal * (lr_corner * unit_normal)
+    ll = point + ll_corner - unit_normal * (ll_corner * unit_normal)
+    
+    return [ul, ur, lr, lr, ll, ul]
 
-    #TODO
+def redner_as_planes(points, normals):
+    scene = window.THREE.Scene.new()
+    camera = window.THREE.PerspectiveCamera(45, 1, 1, 1000)
+    
+    # two triangles per point, 3 vertices per triangle
+    verts = [None for _ in range(6*len(points))]
+
+    for i in range(len(points)):
+        point_verts = plane_vertices(points[i], normals[i])
+        for j in range(6):
+            verts[6*i + j] = point_verts[j]
+    
+    geometry = window.THREE.BufferGeometry.new()
+    geometry.addAttribute('position', window.THREE.BufferAttribute.new(verts, 3))
+    mat = window.THREE.MeshBasicMaterial.new( {'color': 0xff0000 } )
+    mesh = window.THREE.Mesh.new(geometry, mat)
+
+    renderer = window.THREE.WebGLRenderer.new()
+    renderer.setSize(600, 600)
+    document <= renderer.domElement
+    
+    scene.add(mesh)
+    renderer.render(scene, camera)
 
 def create_function_from_input(inp):
     func_text = document[inp].value
@@ -93,10 +116,8 @@ def draw_patch(ev):
     
     xyz_points = [pth(pt) for pt in uv_points]
     normals = [pth(pt) for pt in uv_points]
-    alert(xyz_points[0])
-    alert(xyz_points[1])
-    alert(normals[0])
-    alert(normals[1])
+    
+    render_as_planes(xyz_points, normals)
 
 def setup():
     ##Create inputs for fx, fy, fz
