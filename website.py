@@ -78,13 +78,13 @@ def draw_patch(ev):
     fz = create_function_from_input('fz')
     pth = Patch.create(fx, fy, fz)
     
-    u_min = document['umin'].value
-    u_max = document['umax'].value
-    v_min = document['vmin'].value
-    v_max = document['vmax'].value
+    u_min = float(document['umin'].value)
+    u_max = float(document['umax'].value)
+    v_min = float(document['vmin'].value)
+    v_max = float(document['vmax'].value)
 
-    u_step = document['ustep'].value
-    v_step = document['vstep'].value
+    u_step = float(document['ustep'].value)
+    v_step = float(document['vstep'].value)
     
     u_width = int((u_max - u_min)/u_step)
     v_width = int((v_max - v_min)/v_step)
