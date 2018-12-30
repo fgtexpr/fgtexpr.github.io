@@ -7,9 +7,12 @@ class Patch:
     
     def __init__(self):
         self._delta = 0.001
-    
+
     @abstractmethod
     def call(self, point): raise NotImplementedError
+    
+    def __call__(self, point):
+        return self.call(point)
 
     @classmethod
     def create(cls, fx, fy, fz):
