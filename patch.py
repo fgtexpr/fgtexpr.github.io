@@ -9,9 +9,23 @@ class Patch:
         self._delta = 0.001
     
     @abstractmethod
-    def call(self): raise NotImplementedError
+    def call(self, point): raise NotImplementedError
 
-    
+    @classmethod
+    def create(cls, fx, fy, fz):
+        class DynamicPatch(Patch):
+            def __init__(self):
+                super().__init__()
+            
+            def call(self, point):
+                u = point[0]
+                v = point[1]
+                x = fx(u, v)
+                y = fy(u, v)
+                z = fz(u, v)
+                return Vector(x, y, z)
+        return DynamicPatch()
+
     def uVelocity(self, point):
         return  (self.call(point + Vector(0, 1)*self._delta) - self.call(point)) * (1/self._delta) 
     def vVelocity(self, point):
