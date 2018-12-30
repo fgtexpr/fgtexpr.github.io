@@ -66,9 +66,6 @@ def plane_vertices(point, unit_normal, height = 30, color = "blue"):
     return [ul, ur, lr, lr, ll, ul]
 
 def render_as_planes(points, normals):
-    scene = window.THREE.Scene.new()
-    camera = window.THREE.PerspectiveCamera(45, 1, 1, 1000)
-    
     # two triangles per point, 3 vertices per triangle
     verts = [None for _ in range(6*len(points))]
 
@@ -85,6 +82,10 @@ def render_as_planes(points, normals):
     renderer = window.THREE.WebGLRenderer.new()
     renderer.setSize(600, 600)
     document <= renderer.domElement
+    alert('verts placed')
+    
+    scene = window.THREE.Scene.new()
+    camera = window.THREE.PerspectiveCamera(45, 1, 1, 1000)
     
     scene.add(mesh)
     renderer.render(scene, camera)
