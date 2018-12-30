@@ -65,7 +65,7 @@ def plane_vertices(point, unit_normal, height = 30, color = "blue"):
     
     return [ul, ur, lr, lr, ll, ul]
 
-def redner_as_planes(points, normals):
+def render_as_planes(points, normals):
     scene = window.THREE.Scene.new()
     camera = window.THREE.PerspectiveCamera(45, 1, 1, 1000)
     
