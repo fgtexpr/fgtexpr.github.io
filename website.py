@@ -73,9 +73,10 @@ def render_as_planes(points, normals):
         point_verts = plane_vertices(points[i], normals[i])
         for j in range(6):
             verts[6*i + j] = point_verts[j]
+    alert(verts)
+    alert(verts[0])
     verts = window.Float32Array.new(verts)
-    alert('omgg')
-    alert(verts.join())
+    
     geometry = window.THREE.BufferGeometry.new()
     geometry.addAttribute('position', window.THREE.BufferAttribute.new(verts, 3))
     mat = window.THREE.MeshBasicMaterial.new( {'color': 0xff0000 } )
@@ -128,6 +129,7 @@ def draw_patch(ev):
 
 def setup():
     ##Create inputs for fx, fy, fz
+    alert('ahh')
     create_input('text', 'fx')
     create_input('text', 'fy')
     create_input('text', 'fz')
