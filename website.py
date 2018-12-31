@@ -52,10 +52,10 @@ def create_button(name = None):
     return btn
 
 def plane_vertices(point, unit_normal, height = 5, color = "blue"):
-    ul_corner = Vector(-0.5, 0, 0.5)*height
-    ur_corner = Vector(0.5, 0, 0.5)*height
-    lr_corner = Vector(0.5, 0, -0.5)*height
-    ll_corner = Vector(-0.5, 0, -0.5)*height
+    ul_corner = Vector(-0.5, 0.5, 0)*height
+    ur_corner = Vector(0.5, 0.5, 0)*height
+    lr_corner = Vector(0.5, -0.5, 0)*height
+    ll_corner = Vector(-0.5, -0.5, 0)*height
     
     unit_normal = unit_normal.normalized()
     ul = point + ul_corner - unit_normal * (ul_corner * unit_normal)
@@ -76,7 +76,7 @@ def render_as_planes(points, normals):
                 verts[6*i + j + k] = point_verts[j][k]
 
     verts = window.Float32Array.new(verts)
-    
+    alert(verts.join())    
     geometry = window.THREE.BufferGeometry.new()
     geometry.addAttribute('position', window.THREE.BufferAttribute.new(verts, 3))
     mat = window.THREE.MeshBasicMaterial.new( {'color': 0xff0000 } )
@@ -125,7 +125,7 @@ def draw_patch(ev):
 
 def setup():
     ##Create inputs for fx, fy, fz
-    alert('blarmmiedoodle')
+    alert('blarmmiedoodleiedoo')
     create_input('text', 'fx')
     create_input('text', 'fy')
     create_input('text', 'fz')
