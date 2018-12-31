@@ -80,14 +80,18 @@ def render_as_planes(points, normals):
     mesh = window.THREE.Mesh.new(geometry, mat)
 
     renderer = window.THREE.WebGLRenderer.new()
-    renderer.setSize(600, 600)
+    renderer.setSize(800, 600)
     document <= renderer.domElement
     alert('verts placed')
     
     scene = window.THREE.Scene.new()
-    camera = window.THREE.PerspectiveCamera(45, 1, 1, 1000)
-    
+    camera = window.THREE.PerspectiveCamera.new(45, 800/600, 1, 1000)
+    alert('cam created')
+
+
     scene.add(mesh)
+
+    alert('mesh added')
     renderer.render(scene, camera)
 
 def create_function_from_input(inp):
