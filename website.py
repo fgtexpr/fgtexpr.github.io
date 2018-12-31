@@ -90,7 +90,7 @@ def render_as_planes(points, normals):
     camera = window.THREE.PerspectiveCamera.new(75, 800/600, 0.1, 1000)
     camera.position.z = 20
     scene.add(mesh)
-    scene.add(window.THREE.AxesHelper())
+    scene.add(window.THREE.AxesHelper.new())
     renderer.render(scene, camera)
 
 def create_function_from_input(inp):
@@ -125,7 +125,7 @@ def draw_patch(ev):
 
 def setup():
     ##Create inputs for fx, fy, fz
-    alert('blartt')
+    alert('blarmmie')
     create_input('text', 'fx')
     create_input('text', 'fy')
     create_input('text', 'fz')
