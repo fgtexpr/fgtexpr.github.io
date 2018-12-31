@@ -73,11 +73,13 @@ def render_as_planes(points, normals):
         point_verts = plane_vertices(points[i], normals[i])
         for j in range(6):
             verts[6*i + j] = point_verts[j]
-    if None in verts:
-        alert('YIKES')
-
+    verts = window.Float32Array.new(verts)
+    alert('omg')
+    alert(verts.length)
+    v = window.Array.prototype.slice.call(verts)
+    alert(v[0])
     geometry = window.THREE.BufferGeometry.new()
-    geometry.addAttribute('position', window.THREE.BufferAttribute.new(window.Float32Array.new(verts), 3))
+    geometry.addAttribute('position', window.THREE.BufferAttribute.new(verts, 3))
     mat = window.THREE.MeshBasicMaterial.new( {'color': 0xff0000 } )
     mesh = window.THREE.Mesh.new(geometry, mat)
 
