@@ -131,7 +131,7 @@ def draw_patch(ev):
 
 def setup():
     ##Create inputs for fx, fy, fz
-    alert('ahh')
+    alert('blahh')
     create_input('text', 'fx')
     create_input('text', 'fy')
     create_input('text', 'fz')
