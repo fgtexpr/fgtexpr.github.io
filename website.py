@@ -52,10 +52,10 @@ def create_button(name = None):
     return btn
 
 def plane_vertices(point, unit_normal, height = 5, color = "blue"):
-    ul_corner = Vector(-0.5, 0.5, 0)*height
-    ur_corner = Vector(0.5, 0.5, 0)*height
-    lr_corner = Vector(0.5, -0.5, 0)*height
-    ll_corner = Vector(-0.5, -0.5, 0)*height
+    ul_corner = Vector(-0.5, 0, 0.5)*height
+    ur_corner = Vector(0.5, 0, 0.5)*height
+    lr_corner = Vector(0.5, 0, -0.5)*height
+    ll_corner = Vector(-0.5, 0, -0.5)*height
     
     unit_normal = unit_normal.normalized()
     ul = point + ul_corner - unit_normal * (ul_corner * unit_normal)
@@ -125,7 +125,7 @@ def draw_patch(ev):
 
 def setup():
     ##Create inputs for fx, fy, fz
-    alert('blarmmie')
+    alert('blarmmiedoodle')
     create_input('text', 'fx')
     create_input('text', 'fy')
     create_input('text', 'fz')
