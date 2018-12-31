@@ -90,7 +90,7 @@ def render_as_planes(points, normals):
     camera = window.THREE.PerspectiveCamera.new(75, 800/600, 0.1, 1000)
     camera.position.z = 20
     scene.add(mesh)
-
+    scene.add(window.THREE.AxesHelper())
     renderer.render(scene, camera)
 
 def create_function_from_input(inp):
