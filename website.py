@@ -87,7 +87,7 @@ def render_as_planes(points, normals):
     document <= renderer.domElement
     
     scene = window.THREE.Scene.new()
-    camera = window.THREE.PerspectiveCamera.new(75, 800/600, -50, 50)
+    camera = window.THREE.PerspectiveCamera.new(75, 800/600, 0.1, 1000)
     camera.position.z = 20
     scene.add(mesh)
 
