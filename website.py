@@ -75,8 +75,6 @@ def render_as_planes(points, normals):
             for k in range(3):
                 verts[6*i + j + k] = point_verts[j][k]
 
-    alert(verts)
-    alert(verts[0])
     verts = window.Float32Array.new(verts)
     
     geometry = window.THREE.BufferGeometry.new()
@@ -87,13 +85,10 @@ def render_as_planes(points, normals):
     renderer = window.THREE.WebGLRenderer.new()
     renderer.setSize(800, 600)
     document <= renderer.domElement
-    alert('verts placed')
     
     scene = window.THREE.Scene.new()
     camera = window.THREE.PerspectiveCamera.new(45, 800/600, 1, 1000)
-    alert('cam created')
-
-
+    camera.position.z = 10
     scene.add(mesh)
 
     alert('mesh added')
@@ -131,7 +126,7 @@ def draw_patch(ev):
 
 def setup():
     ##Create inputs for fx, fy, fz
-    alert('blahh')
+    alert('blarghhh')
     create_input('text', 'fx')
     create_input('text', 'fy')
     create_input('text', 'fz')
