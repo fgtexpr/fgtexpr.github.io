@@ -96,7 +96,7 @@ def render_as_planes(points, normals):
 def create_function_from_input(inp):
     func_text = document[inp].value
     def call(u, v):
-        return exec(func_text)
+        return eval(func_text)
     return call
 
 def draw_patch(ev):
