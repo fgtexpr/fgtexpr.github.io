@@ -76,7 +76,7 @@ def render_as_planes(points, normals):
     verts = window.Float32Array.new(verts)
     alert('omg')
     alert(verts.length)
-    v = window.Array.prototype.slice.call(verts)
+    v = window.Array.from(verts)
     alert(v[0])
     geometry = window.THREE.BufferGeometry.new()
     geometry.addAttribute('position', window.THREE.BufferAttribute.new(verts, 3))
