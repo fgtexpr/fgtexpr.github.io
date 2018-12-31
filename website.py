@@ -66,13 +66,15 @@ def plane_vertices(point, unit_normal, height = 30, color = "blue"):
     return [ul, ur, lr, lr, ll, ul]
 
 def render_as_planes(points, normals):
-    # two triangles per point, 3 vertices per triangle
-    verts = [None for _ in range(6*len(points))]
+    # two triangles per point, 3 vertices per triangle, 3 points per vertex
+    verts = [None for _ in range(18*len(points))]
 
     for i in range(len(points)):
         point_verts = plane_vertices(points[i], normals[i])
         for j in range(6):
-            verts[6*i + j] = point_verts[j]
+            for k in range(3):
+                verts[6*i + j + k] = point_verts[j][k]
+
     alert(verts)
     alert(verts[0])
     verts = window.Float32Array.new(verts)
