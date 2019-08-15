@@ -85,11 +85,11 @@ class Renderer:
         ctx.fill()
     
     def clear_canvas(self):
-        self.canvas.getContext('2d').clearRect(0, 0, canv.width, canv.height)
+        self.canvas.getContext('2d').clearRect(0, 0, self.canvas.width, self.canvas.height)
         
     def draw_canvas(self):
         if self._ticks % self._destroy_frame_interval:
-            canvas.width = canvas.width
+            self.canvas.width = self.canvas.width
         self.clear_canvas()
         self.draw_nodes()
         
