@@ -13,7 +13,7 @@ class Node:
         self._kicks = []
         
     def add_neighbor(self, n, e):
-        self.neighbors[n] = 3
+        self.neighbors[n] = e
         
     def add_kick(self, e):
         # type: (real) -> None
@@ -22,8 +22,8 @@ class Node:
     def kick_neighbors(self):
         # type: () => None
         if self.state >= 1:
-            for n in neighbors:
-                n.add_kick(neighbors[n])
+            for n in self.neighbors:
+                n.add_kick(self.neighbors[n])
             self.state = 0
     def update(self, dt):
         # type: () => None
@@ -53,7 +53,7 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
-        alert("debuggg!!")
+        alert("debuggg!!??")
         self._destroy_frame_interval = 20
         self._ticks = 0
     
@@ -84,7 +84,6 @@ class Renderer:
         self.clear(self.canvas)
         self.draw_nodes()
         self._ticks += 1
-        alert([n.state for n in self.sim.nodes])
         
 
 r = Renderer(0.01)
