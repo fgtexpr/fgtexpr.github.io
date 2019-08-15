@@ -66,7 +66,7 @@ class Renderer:
             "kick_eps": sim.eps,
         }
         document <= self.container
-        alert("debuggg???!!!!?")
+        alert("debuggg???!!!!?!!!")
         self._destroy_frame_interval = 100
         self._ticks = 0
     
@@ -123,4 +123,5 @@ class Renderer:
 s = Simulation(0.01, 10, 2, 1, 0.1)
 r = Renderer(s)
 r.draw_param_selector()
-timer.set_interval(r.update, 10)
+r.update()
+# timer.set_interval(r.update, 10)
