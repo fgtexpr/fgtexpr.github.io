@@ -66,7 +66,7 @@ class Renderer:
             "kick_eps": sim.eps,
         }
         document <= self.container
-        alert("debuggg???!!!!?")
+        alert("debuggg???!!!")
         self._destroy_frame_interval = 100
         self._ticks = 0
     
@@ -104,7 +104,7 @@ class Renderer:
             self.canvas.width = self.canvas.width
             self.canvas.height = self.canvas.height
         self.clear_canvas()
-        self.draw_nodes()
+        self.draw_nodes_grid()
         
     def update(self):
         self.draw_canvas()
