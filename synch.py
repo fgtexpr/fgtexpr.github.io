@@ -41,7 +41,7 @@ class Simulation:
 
 def draw_node(canv, node, x, y, r):
     ctx = canv.getContext('2d')
-    ctx.arc(x, y, r, 0, 6.28, true)
+    ctx.arc(x, y, r, 0, 6.28, True)
     ctx.fillStyle = 'rgba(0, 0, 0, {})'.format(node.state)
     ctx.fill()
 
