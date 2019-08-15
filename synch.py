@@ -100,20 +100,24 @@ class Renderer:
     
     def change_params_callback(self, ev):
         self.clear_canvas()
-        self.sim = Simulation(float(self.inputs['dt'].value), 
+        self.sim = Simulation(
+            float(self.inputs['dt'].value), 
             int(self.inputs["n_nodes"].value), 
             float(self.inputs["S0"].value), 
             float(self.inputs["lamb"].value), 
             float(self.inputs["kick_eps"].value),
             )
         self.canvas.width = self.inputs['n_nodes'] * 30
-        
+        global _timer
+        timer.clear_interval(_timer)
+        _timer = timer.set_interval(self.update, 20*float(self.inputs['dt'].value))
     def draw_param_selector(self):
         # param_name, default_value pairs
         
         for param in self.params:
             inp = html.INPUT(type = "text", name = param, value = self.params[param])
             self.inputs[param] = inp
+            self.container <= html.BR()
             self.container <= param
             self.container <= html.BR()
             self.container <= inp
@@ -126,4 +130,4 @@ class Renderer:
 s = Simulation(0.01, 10, 2, 1, 0.1)
 r = Renderer(s)
 r.draw_param_selector()
-timer.set_interval(r.update, 10)
+_timer = timer.set_interval(r.update, 10)
