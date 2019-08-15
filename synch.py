@@ -48,13 +48,13 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
-        alert("ahh")
+        alert("ahh?")
     def draw_nodes(self):
         n = len(self.sim.nodes)
-        radius = self.canv.width/(2*n)
+        radius = self.canvas.width/(2*n)
         
         for i, node in enumerate(self.sim.nodes):
-            draw_node(self.canv, node, i*radius*2, 150, radius)
+            draw_node(self.canvas, node, i*radius*2, 150, radius)
         
     def draw_node(self, canv, node, x, y, r):
         ctx = canv.getContext('2d')
