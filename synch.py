@@ -47,6 +47,7 @@ class Simulation:
         
     def update(self):
         for n in self.nodes:
+            n.kick_neighbors()
             n.update(self.dt)
 
 class Renderer:
@@ -55,7 +56,7 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
-        alert("synch?")
+        alert("synch?!?!")
         self._destroy_frame_interval = 20
         self._ticks = 0
     
