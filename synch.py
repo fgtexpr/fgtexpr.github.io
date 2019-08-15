@@ -66,7 +66,7 @@ class Renderer:
             "kick_eps": sim.eps,
         }
         document <= self.container
-        alert("debug")
+        alert("debugggg")
         self._destroy_frame_interval = 100
         self._ticks = 0
     
@@ -80,9 +80,9 @@ class Renderer:
     def draw_nodes_grid(self):
         n = len(self.sim.nodes)
         
-        radius = self.canvas.width/(n)
         
         m1 = math.floor(math.sqrt(n))
+        radius = self.canvas.width/(m1)
         
         index = 0
         
