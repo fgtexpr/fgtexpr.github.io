@@ -1,4 +1,5 @@
 from browser import document, alert
+from browser import html
 
 class Node:
     def __init__(self, state, dxdt, neighbors):
@@ -38,10 +39,22 @@ class Simulation:
         for n in self.nodes:
             n.update(self.dt)
 
+def draw_node(canv, node, x, y, r):
+    ctx = canv.getContext('2d')
+    ctx.arc(x, y, r, 0, 6.28, true)
+    ctx.fillStyle = 'rgba(0, 0, 0, {})'.format(node.state)
+    ctx.fill()
+
+def clear(canv):
+    canv.getContext('2d').clearRect(0, 0, canv.width, canv.height)
+    
 def render():
-    s = Simulation(0.1)
-    for _ in range(10):
+    s = Simulation(0.01)
+    canvas = html.CANVAS(width = 300, height = 300)
+    for _ in range(100):
         s.update()
-        alert(s.nodes[0].state)
+        clear(canvas)
+        draw_node(canvas, simulation.nodes[0].state, 150, 150, 50)
+        
 
 render()
