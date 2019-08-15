@@ -1,6 +1,8 @@
 from browser import document, alert
 from browser import html
 
+import time
+
 class Node:
     def __init__(self, state, dxdt, neighbors):
         # type: (real, (real) -> real, dict<Node, real>) -> None
@@ -49,13 +51,15 @@ def clear(canv):
     canv.getContext('2d').clearRect(0, 0, canv.width, canv.height)
 
 def render():
-    s = Simulation(0.01)
+    dx = 0.01
+    s = Simulation(dx)
     canvas = html.CANVAS(width = 300, height = 300)
     document <= canvas
     for _ in range(100):
         s.update()
         clear(canvas)
         draw_node(canvas, s.nodes[0], 150, 150, 50)
+        time.sleep(dx)
         
 
 render()
