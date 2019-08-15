@@ -18,8 +18,7 @@ class Node:
         
     def add_kick(self, e):
         # type: (real) -> None
-        if len(self._kicks) == 0:
-            self._kicks.append(e)
+        self._kicks.append(e)
     
     def kick_neighbors(self):
         # type: () => None
@@ -30,6 +29,7 @@ class Node:
     def update(self, dt):
         # type: () => None
         self.state = self.state + dt*self.dxdt(self.state) + sum(self._kicks)
+        self._kicks = []
         self.state = min(1, self.state)
     
 class Simulation:
@@ -66,7 +66,7 @@ class Renderer:
             "kick_eps": sim.eps,
         }
         document <= self.container
-        alert("debuggg???!!!!?!!!")
+        alert("debuggg???!!!!?")
         self._destroy_frame_interval = 100
         self._ticks = 0
     
