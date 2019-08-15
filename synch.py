@@ -48,7 +48,7 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
-        alert("ahh!!!!!!")
+        alert("ahh!!?!?")
         self._destroy_frame_interval = 20
         self._ticks = 0
     
@@ -61,6 +61,7 @@ class Renderer:
         
     def draw_node(self, canv, node, x, y, r):
         ctx = canv.getContext('2d')
+        ctx.beginPath()
         ctx.arc(x, y, r, 0, 6.28)
         ctx.fillStyle = 'rgba(255, 0, 0, {})'.format(node.state)
         ctx.fill()
@@ -78,7 +79,6 @@ class Renderer:
         self.clear(self.canvas)
         self.draw_nodes()
         self._ticks += 1
-        alert([n.state for n in self.sim.nodes])
 
 r = Renderer(0.01)
 
