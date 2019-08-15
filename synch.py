@@ -47,6 +47,7 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
+        draw_node(self.canvas, self.sim.nodes[0], 150, 150, 50)
 
     def draw_node(canv, node, x, y, r):
         ctx = canv.getContext('2d')
@@ -66,4 +67,4 @@ class Renderer:
 
 r = Renderer(0.05)
 
-timer.set_interval(r.update, 50)
+#timer.set_interval(r.update, 50)
