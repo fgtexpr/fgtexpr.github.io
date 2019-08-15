@@ -11,7 +11,10 @@ class Node:
         self.neighbors = neighbors
         self.dxdt = dxdt
         self._kicks = []
-    
+        
+    def add_neighbor(self, n, e):
+        self.neighbors[n] = 3
+        
     def add_kick(self, e):
         # type: (real) -> None
         self._kicks.append(e)
@@ -37,6 +40,10 @@ class Simulation:
         self.dt = dt
         dxdt = lambda x: s_0 - l*x
         self.nodes = [Node(0.4, dxdt, {}), Node(0.5, dxdt, {}), Node(0.1, dxdt, {})]
+        for n in self.nodes:
+            for m in self.nodes:
+                if m != n:
+                    n.add_neighbor(m, 0.2)
         
     def update(self):
         for n in self.nodes:
@@ -48,7 +55,7 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
-        alert("ahh!!?!?")
+        alert("synch?")
         self._destroy_frame_interval = 20
         self._ticks = 0
     
