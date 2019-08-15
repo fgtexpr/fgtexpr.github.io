@@ -18,7 +18,7 @@ class Node:
         
     def add_kick(self, e):
         # type: (real) -> None
-        if len(self._kicks == 0):
+        if len(self._kicks) == 0:
             self._kicks.append(e)
     
     def kick_neighbors(self):
