@@ -57,7 +57,7 @@ class Renderer:
         radius = self.canvas.width/(2*n)
         
         for i, node in enumerate(self.sim.nodes):
-            self.draw_node(self.canvas, node, i*radius*2, 150, radius)
+            self.draw_node(self.canvas, node, radius + i*radius*2, 150, radius)
         
     def draw_node(self, canv, node, x, y, r):
         ctx = canv.getContext('2d')
@@ -69,7 +69,7 @@ class Renderer:
         canv.getContext('2d').clearRect(0, 0, canv.width, canv.height)
     
     def update(self):
-        if self._ticks % self_destroy_frame_interval:
+        if self._ticks % self._destroy_frame_interval:
             del document['canv']
             self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
             document <= self.canvas
