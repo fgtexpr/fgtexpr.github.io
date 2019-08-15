@@ -28,9 +28,8 @@ class Node:
     def update(self, dt):
         # type: () => None
         state = self.state + dt*self.dxdt(self.state) + sum(self._kicks)
-        alert(self._kicks)
         self.state = min(1, state)
-        self._kicks = []
+        alert(self.neighbors)
         if self.state >= 1:
             self.state = 0
     
@@ -57,7 +56,7 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
-        alert("synch?!?!!!!!")
+        alert("debug")
         self._destroy_frame_interval = 20
         self._ticks = 0
     
@@ -88,6 +87,7 @@ class Renderer:
         self.clear(self.canvas)
         self.draw_nodes()
         self._ticks += 1
+        
 
 r = Renderer(0.01)
 
