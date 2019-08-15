@@ -36,7 +36,7 @@ class Simulation:
         l = 1
         self.dt = dt
         dxdt = lambda x: s_0 - l*x
-        self.nodes = [Node(0.4, dxdt, {})]
+        self.nodes = [Node(0.4, dxdt, {}), Node(0.2, dxdt, {})]
         
     def update(self):
         for n in self.nodes:
@@ -48,7 +48,7 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
-        alert("ahh???")
+        alert("ahh????")
         self._destroy_frame_interval = 20
         self._ticks = 0
     
