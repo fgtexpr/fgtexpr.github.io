@@ -53,7 +53,7 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
-        alert("debuggg!!??")
+        alert("debuggg!!??!!")
         self._destroy_frame_interval = 20
         self._ticks = 0
     
@@ -84,6 +84,7 @@ class Renderer:
         self.clear(self.canvas)
         self.draw_nodes()
         self._ticks += 1
+        alert([n.state for n in self.sim.nodes])
         
 
 r = Renderer(0.01)
