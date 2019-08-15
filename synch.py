@@ -1,7 +1,5 @@
-from browser import document, alert
-from browser import html
+from browser import document, html, timer
 
-import time
 
 class Node:
     def __init__(self, state, dxdt, neighbors):
@@ -41,25 +39,29 @@ class Simulation:
         for n in self.nodes:
             n.update(self.dt)
 
-def draw_node(canv, node, x, y, r):
-    ctx = canv.getContext('2d')
-    ctx.arc(x, y, r, 0, 6.28, True)
-    ctx.fillStyle = 'rgba(0, 0, 0, {})'.format(node.state)
-    ctx.fill()
+class Renderer:
+    def __init__(self, dx):
+        self.dx = dx
+        self.sim = Simulation(dx)
+        self.canvas = html.CANVAS(width = 300, height = 300)
+        document <= self.canvas
 
-def clear(canv):
-    canv.getContext('2d').clearRect(0, 0, canv.width, canv.height)
-
-def render():
-    dx = 0.01
-    s = Simulation(dx)
-    canvas = html.CANVAS(width = 300, height = 300)
-    document <= canvas
-    for _ in range(100):
-        s.update()
-        clear(canvas)
-        draw_node(canvas, s.nodes[0], 150, 150, 50)
-        time.sleep(dx)
+    def draw_node(canv, node, x, y, r):
+        ctx = canv.getContext('2d')
+        ctx.arc(x, y, r, 0, 6.28, True)
+        ctx.fillStyle = 'rgba(0, 0, 0, {})'.format(node.state)
+        ctx.fill()
+    
+    def clear(canv):
+        canv.getContext('2d').clearRect(0, 0, canv.width, canv.height)
+    
+    def update():
+        self.sim.update()
+        clear(self.canvas)
+        draw_node(self.canvas, self.sim.nodes[0], 150, 150, 50)
+        time.sleep(self.dx)
         
 
-render()
+r = Renderer(0.05)
+
+timer.set_interval(r.update, 50)
