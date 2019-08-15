@@ -64,10 +64,10 @@ class Renderer:
             "S0": sim.S0,
             "lamb": sim.lamb,
             "kick_eps": sim.eps,
-            "canvas_width": canvas.width,
+            "canvas_width": self.canvas.width,
         }
         document <= self.container
-        alert("debuggg!!??!!")
+        alert("debuggg!!??")
         self._destroy_frame_interval = 100
         self._ticks = 0
     
