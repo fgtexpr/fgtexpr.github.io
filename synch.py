@@ -47,24 +47,23 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
-        draw_node(self.canvas, self.sim.nodes[0], 150, 150, 50)
 
-    def draw_node(canv, node, x, y, r):
+    def draw_node(self, canv, node, x, y, r):
         ctx = canv.getContext('2d')
         ctx.arc(x, y, r, 0, 6.28, True)
         ctx.fillStyle = 'rgba(0, 0, 0, {})'.format(node.state)
         ctx.fill()
     
-    def clear(canv):
+    def clear(self, canv):
         canv.getContext('2d').clearRect(0, 0, canv.width, canv.height)
     
-    def update():
+    def update(self):
         self.canvas = document['canv']
         self.sim.update()
-        clear(self.canvas)
-        draw_node(self.canvas, self.sim.nodes[0], 150, 150, 50)
+        self.clear(self.canvas)
+        self.draw_node(self.canvas, self.sim.nodes[0], 150, 150, 50)
         
 
 r = Renderer(0.05)
 
-#timer.set_interval(r.update, 50)
+timer.set_interval(r.update, 50)
