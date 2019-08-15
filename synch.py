@@ -103,8 +103,8 @@ class Renderer:
         self.sim = Simulation(float(self.inputs['dt'].value), 
             int(self.inputs["n_nodes"].value), 
             float(self.inputs["S0"].value), 
-            float(self.input["lambda"].value), 
-            float(self.input["kick_eps"].value),
+            float(self.inputs["lambda"].value), 
+            float(self.inputs["kick_eps"].value),
             )
         self.canvas.width = self.inputs['n_nodes'] * 30
         
