@@ -145,5 +145,5 @@ class Renderer:
 s = Simulation(0.01, 10, 2, 1, 0.1)
 r = Renderer(s)
 r.draw_param_selector()
-# r.update()
-_timer = timer.set_interval(r.update, 10)
+r.update()
+# _timer = timer.set_interval(r.update, 10)
