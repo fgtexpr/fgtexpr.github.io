@@ -1,5 +1,6 @@
 import time
 import math
+import random
 from browser import document, html, alert
 from browser import timer
 
@@ -17,7 +18,8 @@ class Node:
         
     def add_kick(self, e):
         # type: (real) -> None
-        self._kicks.append(e)
+        if len(self._kicks == 0):
+            self._kicks.append(e)
     
     def kick_neighbors(self):
         # type: () => None
@@ -27,7 +29,7 @@ class Node:
             self.state = 0
     def update(self, dt):
         # type: () => None
-        self.state = self.state + dt*self.dxdt(self.state) + sum(self._kicks)
+        self.state = self.state + dt*self.dxdt(self.state) + sum(self._kicks))
         self.state = min(1, self.state)
     
 class Simulation:
