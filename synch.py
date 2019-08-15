@@ -88,6 +88,6 @@ class Renderer:
         self._ticks += 1
         
 
-r = Renderer(0.01)
+r = Renderer(0.001)
 
-timer.set_interval(r.update, 30)
+timer.set_interval(r.update, 10)
