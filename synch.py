@@ -48,7 +48,10 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
-        alert("ahh??")
+        alert("ahh???")
+        self._destroy_frame_interval = 20
+        self._ticks = 0
+    
     def draw_nodes(self):
         n = len(self.sim.nodes)
         radius = self.canvas.width/(2*n)
@@ -66,11 +69,15 @@ class Renderer:
         canv.getContext('2d').clearRect(0, 0, canv.width, canv.height)
     
     def update(self):
+        if self._ticks % self_destroy_frame_interval:
+            del document['canv']
+            self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
+            document <= self.canvas
         self.canvas = document['canv']
         self.sim.update()
         self.clear(self.canvas)
         self.draw_nodes()
-        
+        self._ticks += 1
 
 r = Renderer(0.02)
 
