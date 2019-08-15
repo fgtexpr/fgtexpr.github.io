@@ -100,11 +100,11 @@ class Renderer:
     
     def change_params_callback(self, ev):
         self.clear_canvas()
-        self.sim = Simulation(float(self.inputs['dt']), 
-            int(self.inputs["n_nodes"]), 
-            float(self.inputs["S0"]), 
-            float(self.input["lambda"]), 
-            float(self.input["kick_eps"]),
+        self.sim = Simulation(float(self.inputs['dt'].value), 
+            int(self.inputs["n_nodes"].value), 
+            float(self.inputs["S0"].value), 
+            float(self.input["lambda"].value), 
+            float(self.input["kick_eps"].value),
             )
         self.canvas.width = self.inputs['n_nodes'] * 30
         
