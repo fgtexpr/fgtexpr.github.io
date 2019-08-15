@@ -42,7 +42,7 @@ class Simulation:
         for n in self.nodes:
             for m in self.nodes:
                 if m != n:
-                    n.add_neighbor(m, 0.3)
+                    n.add_neighbor(m, 0.1)
         
     def update(self):
         for n in self.nodes:
@@ -55,7 +55,7 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
-        alert("debuggg!!??!!!!!????")
+        alert("debuggg!!??!!!!!????!!")
         self._destroy_frame_interval = 20
         self._ticks = 0
     
