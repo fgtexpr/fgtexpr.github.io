@@ -76,10 +76,11 @@ class Renderer:
         
         for i, node in enumerate(self.sim.nodes):
             self.draw_node(node, radius + i*radius*2, self.canvas.height/2, radius)
+    
     def draw_nodes_grid(self):
         n = len(self.sim.nodes)
         
-        radius = self.canvs.width/(n)
+        radius = self.canvas.width/(n)
         
         m1 = math.floor(math.sqrt(n))
         
@@ -144,5 +145,5 @@ class Renderer:
 s = Simulation(0.01, 10, 2, 1, 0.1)
 r = Renderer(s)
 r.draw_param_selector()
-r.update()
-# _timer = timer.set_interval(r.update, 10)
+# r.update()
+_timer = timer.set_interval(r.update, 10)
