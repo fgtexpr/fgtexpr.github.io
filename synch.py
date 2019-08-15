@@ -1,3 +1,4 @@
+import time
 from browser import document, html, timer
 
 
