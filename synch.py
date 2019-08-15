@@ -84,9 +84,13 @@ class Renderer:
         
         m1 = math.floor(math.sqrt(n))
         
+        index = 0
+        
         for i in range(m1):
             for j in range(m1):
-                self.draw_node(node, radius + i*radius*2, radius + j*radius*2)
+                if index < n:
+                    self.draw_node(self.sim.nodes[index], radius + i*radius*2, radius + j*radius*2)
+                ++index
                 
     def draw_node(self, node, x, y, r):
         ctx = self.canvas.getContext('2d')
@@ -126,6 +130,7 @@ class Renderer:
         global _timer
         timer.clear_interval(_timer)
         _timer = timer.set_interval(self.update, 20*float(self.inputs['dt'].value))
+        
     def draw_param_selector(self):
         # param_name, default_value pairs
         
