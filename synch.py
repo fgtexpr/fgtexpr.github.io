@@ -33,12 +33,12 @@ class Node:
         self.state = min(1, self.state)
     
 class Simulation:
-    def __init__(self, dt):
+    def __init__(self, dt, n_nodes):
         s_0 = 2
         l = 1
         self.dt = dt
         dxdt = lambda x: s_0 - l*x
-        self.nodes = [Node(0.24, dxdt, {}), Node(0.5, dxdt, {}), Node(0.1, dxdt, {})]
+        self.nodes = [ Node(random.random(), dxdt, {}) for _ in range(n_nodes) ]
         for n in self.nodes:
             for m in self.nodes:
                 if m != n:
@@ -52,10 +52,10 @@ class Simulation:
 class Renderer:
     def __init__(self, dx):
         self.dx = dx
-        self.sim = Simulation(dx)
-        self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
+        self.sim = Simulation(dx, 10)
+        self.canvas = html.CANVAS(id = 'canv', width = 600, height = 300)
         document <= self.canvas
-        alert("debuggg!!??!!!!")
+        alert("debuggg!!??")
         self._destroy_frame_interval = 20
         self._ticks = 0
     
