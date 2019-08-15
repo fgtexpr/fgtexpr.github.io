@@ -54,7 +54,7 @@ class Renderer:
     def __init__(self, sim):
         self.dx = sim.dt
         self.sim = sim
-        self.canvas = html.CANVAS(id = 'canv', width = 600, height = 300)
+        self.canvas = html.CANVAS(id = 'canv', width = 600, height = 600)
         self.container = html.DIV()
         self.container <= self.canvas
         self.inputs = {}
@@ -66,7 +66,7 @@ class Renderer:
             "kick_eps": sim.eps,
         }
         document <= self.container
-        alert("debuggg???")
+        alert("debug")
         self._destroy_frame_interval = 100
         self._ticks = 0
     
@@ -126,8 +126,9 @@ class Renderer:
             float(self.inputs["lamb"].value), 
             float(self.inputs["kick_eps"].value),
             )
-        self.canvas.width = self.inputs['n_nodes'] * 40
-        self.canvas.height = self.canvas.width
+        m = math.floor(math.sqrt(len(self.inputs['n_nodes'])))
+        self.canvas.width = m * 80
+        self.canvas.height = m * 80
         global _timer
         timer.clear_interval(_timer)
         _timer = timer.set_interval(self.update, 20*float(self.inputs['dt'].value))
