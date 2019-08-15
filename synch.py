@@ -98,7 +98,7 @@ class Renderer:
         self.sim.update()
         self._ticks += 1
     
-    def change_params_callback(self):
+    def change_params_callback(self, ev):
         clear_canvas()
         self.sim = Simulation(float(self.inputs['dt']), 
             int(self.inputs["n_nodes"]), 
@@ -123,4 +123,4 @@ class Renderer:
 s = Simulation(0.01, 10, 2, 1, 0.1)
 r = Renderer(s)
 r.draw_param_selector()
-r.draw_nodes()
+r.update()
