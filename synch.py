@@ -33,16 +33,17 @@ class Node:
         self.state = min(1, self.state)
     
 class Simulation:
-    def __init__(self, dt, n_nodes):
-        s_0 = 2
-        l = 1
+    def __init__(self, dt, n_nodes, s0, lamb, eps):
+        self.S0 = s0
+        self.lamb = lamb
         self.dt = dt
-        dxdt = lambda x: s_0 - l*x
+        self.eps = eps
+        dxdt = lambda x: s0 - lamb*x
         self.nodes = [ Node(random.random(), dxdt, {}) for _ in range(n_nodes) ]
         for n in self.nodes:
             for m in self.nodes:
                 if m != n:
-                    n.add_neighbor(m, 0.1)
+                    n.add_neighbor(m, eps)
         
     def update(self):
         for n in self.nodes:
@@ -54,8 +55,19 @@ class Renderer:
         self.dx = dt
         self.sim = sim
         self.canvas = html.CANVAS(id = 'canv', width = 600, height = 300)
-        document <= self.canvas
-        alert("debuggg!!??!!!??")
+        self.container = html.DIV()
+        self.container <= self.canvas
+        self.inputs = {}
+        self.params = {
+            "dt" = self.sim.dt,
+            "n_nodes": len(sim.nodes),
+            "S0": sim.S0,
+            "lamb": sim.lamb,
+            "kick_eps": sim.eps
+            "canvas_width": canvas.width,
+        }
+        document <= self.container
+        alert("debuggg!!??!!")
         self._destroy_frame_interval = 100
         self._ticks = 0
     
@@ -64,32 +76,51 @@ class Renderer:
         radius = self.canvas.width/(2*n)
         
         for i, node in enumerate(self.sim.nodes):
-            self.draw_node(self.canvas, node, radius + i*radius*2, 150, radius)
+            self.draw_node(node, radius + i*radius*2, self.canvas.height/2, radius)
         
-    def draw_node(self, canv, node, x, y, r):
-        ctx = canv.getContext('2d')
+    def draw_node(self, node, x, y, r):
+        ctx = self.canvas.getContext('2d')
         ctx.beginPath()
         ctx.arc(x, y, r, 0, 6.28)
         ctx.fillStyle = 'rgba(255, 0, 0, {})'.format(node.state)
         ctx.fill()
     
-    def clear(self, canv):
-        canv.getContext('2d').clearRect(0, 0, canv.width, canv.height)
-    
-    def update(self):
+    def clear_canvas(self):
+        self.canvas.getContext('2d').clearRect(0, 0, canv.width, canv.height)
+        
+    def draw_canvas(self):
         if self._ticks % self._destroy_frame_interval:
-            del document['canv']
-            self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
-            document <= self.canvas
-        self.canvas = document['canv']
-        self.sim.update()
-        self.clear(self.canvas)
+            canvas.width = canvas.width
+        self.clear_canvas()
         self.draw_nodes()
+        
+    def update(self):
+        draw_canvas()
+        self.sim.update()
         self._ticks += 1
+    
+    def change_params_callback(self):
+        clear_canvas()
+        self.sim = Simulation(self.inputs['dt'], 
+            self.inputs["n_nodes"], 
+            self.inputs["S0"], 
+            self.input["lambda"], 
+            self.input["kick_eps"],
+            )
+        self.canvas.width = self.inputs['n_nodes'] * 30
         
     def draw_param_selector(self):
+        # param_name, default_value pairs
         
+        for param in params:
+            inp = html.INPUT(type = "text", name = param, value = params[param])
+            self.inputs[param] = inp
+            self.container <= inp
+        
+        butt = html.BUTTON("update simulation")
+        butt.bind("click", self.change_params_callback)
 
-r = Renderer(0.01)
-
+s = Simulation(0.01, 10, 2, 1, 0.1)
+r = Renderer(s)
+r.draw_param_selector()
 timer.set_interval(r.update, 10)
