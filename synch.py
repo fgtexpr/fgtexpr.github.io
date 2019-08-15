@@ -23,8 +23,6 @@ class Node:
         state = self.state + dt*self.dxdt(self.state) + sum(self._kicks)
         self.state = min(1, state)
         self._kicks = []
-        self.state = min(1, self.f(self.state))
-        self.f = self._next_f
     
 class Simulation:
     def __init__(self, dt):
