@@ -1,5 +1,5 @@
 import time
-from browser import document, html
+from browser import document, html, alert
 from browser import timer
 
 
@@ -62,6 +62,7 @@ class Renderer:
         self.sim.update()
         self.clear(self.canvas)
         self.draw_node(self.canvas, self.sim.nodes[0], 150, 150, 50)
+        alert(self.sim.nodes[0].state)
         
 
 r = Renderer(0.05)
