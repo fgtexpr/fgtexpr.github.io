@@ -81,7 +81,9 @@ class Renderer:
         ctx = self.canvas.getContext('2d')
         ctx.beginPath()
         ctx.arc(x, y, r, 0, 6.28)
-        ctx.fillStyle = 'rgba(255, 0, 0, {})'.format(node.state)
+        r = 255 - (255*node.state)
+        b = 255*node.state
+        ctx.fillStyle = 'rgb({}, 0, {},)'.format(r, b)
         ctx.fill()
     
     def clear_canvas(self):
