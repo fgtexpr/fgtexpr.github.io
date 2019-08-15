@@ -59,7 +59,7 @@ class Renderer:
         self.container <= self.canvas
         self.inputs = {}
         self.params = {
-            "dt" = self.sim.dt,
+            "dt": self.sim.dt,
             "n_nodes": len(sim.nodes),
             "S0": sim.S0,
             "lamb": sim.lamb,
