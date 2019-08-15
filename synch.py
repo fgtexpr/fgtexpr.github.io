@@ -48,11 +48,11 @@ class Simulation:
         for n in self.nodes:
             n.update(self.dt)
             n.kick_neighbors()
-
+    
 class Renderer:
-    def __init__(self, dx):
-        self.dx = dx
-        self.sim = Simulation(dx, 10)
+    def __init__(self, dt, sim):
+        self.dx = dt
+        self.sim = sim
         self.canvas = html.CANVAS(id = 'canv', width = 600, height = 300)
         document <= self.canvas
         alert("debuggg!!??!!!??")
@@ -86,6 +86,8 @@ class Renderer:
         self.clear(self.canvas)
         self.draw_nodes()
         self._ticks += 1
+        
+    def draw_param_selector(self):
         
 
 r = Renderer(0.01)
