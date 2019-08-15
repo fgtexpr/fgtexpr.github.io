@@ -1,6 +1,6 @@
 from browser import document, alert
 
-class Node(object):
+class Node:
     def __init__(self, state, dxdt, neighbors):
         # type: (real, (real) -> real, dict<Node, real>) -> None
         self.state = state
@@ -26,7 +26,7 @@ class Node(object):
         self.state = min(1, self.f(self.state))
         self.f = self._next_f
     
-class Simulation(object):
+class Simulation:
     def __init__(self, dt):
         s_0 = 2
         l = 1
