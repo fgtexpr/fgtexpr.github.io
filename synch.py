@@ -23,6 +23,8 @@ class Node:
         state = self.state + dt*self.dxdt(self.state) + sum(self._kicks)
         self.state = min(1, state)
         self._kicks = []
+        if self.state >= 1:
+            self.state = 0
     
 class Simulation:
     def __init__(self, dt):
