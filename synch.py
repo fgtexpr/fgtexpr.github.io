@@ -103,7 +103,7 @@ class Renderer:
         self.sim = Simulation(float(self.inputs['dt'].value), 
             int(self.inputs["n_nodes"].value), 
             float(self.inputs["S0"].value), 
-            float(self.inputs["lambda"].value), 
+            float(self.inputs["lamb"].value), 
             float(self.inputs["kick_eps"].value),
             )
         self.canvas.width = self.inputs['n_nodes'] * 30
@@ -114,7 +114,10 @@ class Renderer:
         for param in self.params:
             inp = html.INPUT(type = "text", name = param, value = self.params[param])
             self.inputs[param] = inp
+            self.container <= param
+            self.container <= html.BR()
             self.container <= inp
+            self.container <= html.BR()
         
         butt = html.BUTTON("update simulation")
         butt.bind("click", self.change_params_callback)
