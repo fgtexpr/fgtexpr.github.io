@@ -24,14 +24,12 @@ class Node:
         if self.state >= 1:
             for n in neighbors:
                 n.add_kick(neighbors[n])
+            self.state = 0
     
     def update(self, dt):
         # type: () => None
         state = self.state + dt*self.dxdt(self.state) + sum(self._kicks)
         self.state = min(1, state)
-        alert(self.neighbors)
-        if self.state >= 1:
-            self.state = 0
     
 class Simulation:
     def __init__(self, dt):
@@ -47,8 +45,8 @@ class Simulation:
         
     def update(self):
         for n in self.nodes:
-            n.kick_neighbors()
             n.update(self.dt)
+            n.kick_neighbors()
 
 class Renderer:
     def __init__(self, dx):
@@ -56,7 +54,7 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
-        alert("debug")
+        alert("debug1")
         self._destroy_frame_interval = 20
         self._ticks = 0
     
