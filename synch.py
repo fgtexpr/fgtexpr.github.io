@@ -42,7 +42,7 @@ class Simulation:
         for n in self.nodes:
             for m in self.nodes:
                 if m != n:
-                    n.add_neighbor(m, 0.05)
+                    n.add_neighbor(m, 0.1)
         
     def update(self):
         for n in self.nodes:
