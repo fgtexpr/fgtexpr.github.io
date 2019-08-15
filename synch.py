@@ -70,13 +70,23 @@ class Renderer:
         self._destroy_frame_interval = 100
         self._ticks = 0
     
-    def draw_nodes(self):
+    def draw_nodes_line(self):
         n = len(self.sim.nodes)
         radius = self.canvas.width/(2*n)
         
         for i, node in enumerate(self.sim.nodes):
             self.draw_node(node, radius + i*radius*2, self.canvas.height/2, radius)
+    def draw_nodes_grid(self):
+        n = len(self.sim.nodes)
         
+        radius = self.canvs.width/(n)
+        
+        m1 = math.floor(math.sqrt(n1))
+        
+        for i in range(m1):
+            for j in range(m1):
+                self.draw_node(node, radius + i*radius*2, radius + j*radius*2)
+                
     def draw_node(self, node, x, y, r):
         ctx = self.canvas.getContext('2d')
         ctx.beginPath()
@@ -92,6 +102,7 @@ class Renderer:
     def draw_canvas(self):
         if self._ticks % self._destroy_frame_interval:
             self.canvas.width = self.canvas.width
+            self.canvas.height = self.canvas.height
         self.clear_canvas()
         self.draw_nodes()
         
@@ -110,6 +121,7 @@ class Renderer:
             float(self.inputs["kick_eps"].value),
             )
         self.canvas.width = self.inputs['n_nodes'] * 30
+        self.canvas.height = self.canvas.width
         global _timer
         timer.clear_interval(_timer)
         _timer = timer.set_interval(self.update, 20*float(self.inputs['dt'].value))
