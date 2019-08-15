@@ -1,5 +1,6 @@
 import time
-from browser import document, html, timer
+from browser import document, html
+from browser import timer
 
 
 class Node:
