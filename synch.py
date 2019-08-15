@@ -61,7 +61,6 @@ class Renderer:
         self.sim.update()
         clear(self.canvas)
         draw_node(self.canvas, self.sim.nodes[0], 150, 150, 50)
-        time.sleep(self.dx)
         
 
 r = Renderer(0.05)
