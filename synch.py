@@ -40,10 +40,10 @@ class Simulation:
         self.eps = eps
         dxdt = lambda x: s0 - lamb*x
         self.nodes = [ Node(random.random(), dxdt, {}) for _ in range(n_nodes) ]
-        for n in self.nodes:
-            for m in self.nodes:
+        for i, n in enumerate(self.nodes):
+            for j, m in enumerate(self.nodes):
                 if m != n:
-                    n.add_neighbor(m, eps)
+                    n.add_neighbor(m, eps*(1/(i*j)))
         
     def update(self):
         for n in self.nodes:
@@ -126,7 +126,7 @@ class Renderer:
             float(self.inputs["lamb"].value), 
             float(self.inputs["kick_eps"].value),
             )
-        self.canvas.width = self.inputs['n_nodes'] * 30
+        self.canvas.width = self.inputs['n_nodes'] * 40
         self.canvas.height = self.canvas.width
         global _timer
         timer.clear_interval(_timer)
