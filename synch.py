@@ -48,11 +48,11 @@ class Renderer:
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
         self.draw_node(self.canvas, self.sim.nodes[0], 150, 150, 50)
-        alert("F")
+        alert("G")
 
     def draw_node(self, canv, node, x, y, r):
         ctx = canv.getContext('2d')
-        ctx.arc(x, y, r, 0, 6.28, True)
+        ctx.arc(x, y, r, 0, 6.27)
         ctx.fillStyle = 'rgba(255, 0, 0, {})'.format(node.state)
         ctx.fill()
     
