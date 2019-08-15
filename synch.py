@@ -51,7 +51,7 @@ class Renderer:
     def draw_node(self, canv, node, x, y, r):
         ctx = canv.getContext('2d')
         ctx.arc(x, y, r, 0, 6.28, True)
-        ctx.fillStyle = 'rgba(0, 0, 0, {})'.format(node.state)
+        ctx.fillStyle = 'rgba(255, 0, 0, {})'.format(node.state)
         ctx.fill()
     
     def clear(self, canv):
@@ -62,7 +62,6 @@ class Renderer:
         self.sim.update()
         self.clear(self.canvas)
         self.draw_node(self.canvas, self.sim.nodes[0], 150, 150, 50)
-        alert(self.sim.nodes[0].state)
         
 
 r = Renderer(0.05)
