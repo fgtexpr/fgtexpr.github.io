@@ -43,7 +43,7 @@ class Simulation:
         for i, n in enumerate(self.nodes):
             for j, m in enumerate(self.nodes):
                 if m != n:
-                    n.add_neighbor(m, eps/( (j + i*math.floor(math.sqrt(len(nodes)) ) + 1 ) ) )
+                    n.add_neighbor(m, eps/( (j + i*math.floor(math.sqrt(len(self.nodes)) ) + 1 ) ) )
         
     def update(self):
         for n in self.nodes:
@@ -126,7 +126,7 @@ class Renderer:
             float(self.inputs["lamb"].value), 
             float(self.inputs["kick_eps"].value),
             )
-        m = math.floor(math.sqrt(len(self.inputs['n_nodes'])))
+        m = math.floor(math.sqrt(len(self.inputs['n_nodes'].value)))
         self.canvas.width = m * 80
         self.canvas.height = m * 80
         global _timer
