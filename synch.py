@@ -29,7 +29,7 @@ class Node:
             self.state = 0
     def update(self, dt):
         # type: () => None
-        self.state = self.state + dt*self.dxdt(self.state) + sum(self._kicks))
+        self.state = self.state + dt*self.dxdt(self.state) + sum(self._kicks)
         self.state = min(1, self.state)
     
 class Simulation:
