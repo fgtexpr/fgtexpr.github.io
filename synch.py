@@ -89,7 +89,7 @@ class Renderer:
         for i in range(m1):
             for j in range(m1):
                 if index < n:
-                    self.draw_node(self.sim.nodes[index], radius + i*radius*2, radius + j*radius*2)
+                    self.draw_node(self.sim.nodes[index], radius + i*radius*2, radius + j*radius*2, radius)
                 ++index
                 
     def draw_node(self, node, x, y, r):
@@ -150,5 +150,5 @@ class Renderer:
 s = Simulation(0.01, 10, 2, 1, 0.1)
 r = Renderer(s)
 r.draw_param_selector()
-r.update()
-# _timer = timer.set_interval(r.update, 10)
+# r.update()
+_timer = timer.set_interval(r.update, 10)
