@@ -48,6 +48,7 @@ class Renderer:
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
         self.draw_node(self.canvas, self.sim.nodes[0], 150, 150, 50)
+        alert("F")
 
     def draw_node(self, canv, node, x, y, r):
         ctx = canv.getContext('2d')
