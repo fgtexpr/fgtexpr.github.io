@@ -90,4 +90,4 @@ class Renderer:
 
 r = Renderer(0.01)
 
-timer.set_interval(r.update, 10)
+timer.set_interval(r.update, 30)
