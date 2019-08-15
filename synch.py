@@ -51,8 +51,8 @@ class Simulation:
             n.kick_neighbors()
     
 class Renderer:
-    def __init__(self, dt, sim):
-        self.dx = dt
+    def __init__(self, sim):
+        self.dx = sim.dt
         self.sim = sim
         self.canvas = html.CANVAS(id = 'canv', width = 600, height = 300)
         self.container = html.DIV()
