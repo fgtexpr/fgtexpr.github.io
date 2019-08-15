@@ -66,7 +66,6 @@ class Renderer:
             "kick_eps": sim.eps,
         }
         document <= self.container
-        alert("debugggg")
         self._destroy_frame_interval = 100
         self._ticks = 0
     
@@ -82,7 +81,7 @@ class Renderer:
         
         
         m1 = math.floor(math.sqrt(n))
-        radius = self.canvas.width/(m1)
+        radius = self.canvas.width/(2*m1)
         
         index = 0
         
@@ -153,4 +152,5 @@ s = Simulation(0.01, 10, 2, 1, 0.1)
 r = Renderer(s)
 r.draw_param_selector()
 # r.update()
+alert("debugggg!!")
 _timer = timer.set_interval(r.update, 10)
