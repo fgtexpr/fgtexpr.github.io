@@ -54,7 +54,7 @@ def render():
     for _ in range(100):
         s.update()
         clear(canvas)
-        draw_node(canvas, s.nodes[0].state, 150, 150, 50)
+        draw_node(canvas, s.nodes[0], 150, 150, 50)
         
 
 render()
