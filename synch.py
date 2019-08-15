@@ -63,7 +63,7 @@ class Renderer:
             "n_nodes": len(sim.nodes),
             "S0": sim.S0,
             "lamb": sim.lamb,
-            "kick_eps": sim.eps
+            "kick_eps": sim.eps,
             "canvas_width": canvas.width,
         }
         document <= self.container
