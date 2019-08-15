@@ -32,7 +32,7 @@ class Node:
     
 class Simulation:
     def __init__(self, dt):
-        s_0 = 2
+        s_0 = 0.2
         l = 1
         self.dt = dt
         dxdt = lambda x: s_0 - l*x
@@ -53,7 +53,7 @@ class Renderer:
         self.sim = Simulation(dx)
         self.canvas = html.CANVAS(id = 'canv', width = 300, height = 300)
         document <= self.canvas
-        alert("debuggg!!??!!!!!")
+        alert("debuggg!!??!!!!!???")
         self._destroy_frame_interval = 20
         self._ticks = 0
     
