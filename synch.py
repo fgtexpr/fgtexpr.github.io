@@ -64,10 +64,9 @@ class Renderer:
             "S0": sim.S0,
             "lamb": sim.lamb,
             "kick_eps": sim.eps,
-            "canvas_width": self.canvas.width,
         }
         document <= self.container
-        alert("debuggg!!")
+        alert("debuggg")
         self._destroy_frame_interval = 100
         self._ticks = 0
     
@@ -101,11 +100,11 @@ class Renderer:
     
     def change_params_callback(self):
         clear_canvas()
-        self.sim = Simulation(self.inputs['dt'], 
-            self.inputs["n_nodes"], 
-            self.inputs["S0"], 
-            self.input["lambda"], 
-            self.input["kick_eps"],
+        self.sim = Simulation(float(self.inputs['dt']), 
+            int(self.inputs["n_nodes"]), 
+            float(self.inputs["S0"]), 
+            float(self.input["lambda"]), 
+            float(self.input["kick_eps"]),
             )
         self.canvas.width = self.inputs['n_nodes'] * 30
         
@@ -119,6 +118,7 @@ class Renderer:
         
         butt = html.BUTTON("update simulation")
         butt.bind("click", self.change_params_callback)
+        self.container <= butt
 
 s = Simulation(0.01, 10, 2, 1, 0.1)
 r = Renderer(s)
