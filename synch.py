@@ -43,7 +43,7 @@ class Simulation:
         for i, n in enumerate(self.nodes):
             for j, m in enumerate(self.nodes):
                 if m != n:
-                    n.add_neighbor(m, eps/( (i*j)+1  ) )
+                    n.add_neighbor(m, eps/( (j + i*math.floor(math.sqrt(len(nodes)) ) + 1 ) ) )
         
     def update(self):
         for n in self.nodes:
