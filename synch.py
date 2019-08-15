@@ -47,10 +47,11 @@ def draw_node(canv, node, x, y, r):
 
 def clear(canv):
     canv.getContext('2d').clearRect(0, 0, canv.width, canv.height)
-    
+
 def render():
     s = Simulation(0.01)
     canvas = html.CANVAS(width = 300, height = 300)
+    document <= canvas
     for _ in range(100):
         s.update()
         clear(canvas)
