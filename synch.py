@@ -81,7 +81,7 @@ class Renderer:
         
         radius = self.canvs.width/(n)
         
-        m1 = math.floor(math.sqrt(n1))
+        m1 = math.floor(math.sqrt(n))
         
         for i in range(m1):
             for j in range(m1):
