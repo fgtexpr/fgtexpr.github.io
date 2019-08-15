@@ -83,7 +83,7 @@ class Renderer:
         ctx.arc(x, y, r, 0, 6.28)
         r = 255 - (255*node.state)
         b = 255*node.state
-        ctx.fillStyle = 'rgb({}, 0, {},)'.format(r, b)
+        ctx.fillStyle = 'rgb({}, 0, {})'.format(r, b)
         ctx.fill()
     
     def clear_canvas(self):
