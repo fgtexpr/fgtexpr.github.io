@@ -90,8 +90,8 @@ class Renderer:
             for j in range(m1):
                 if index < n:
                     self.draw_node(self.sim.nodes[index], radius + i*radius*2, radius + j*radius*2, radius)
-                ++index
-                alert(index)
+                index = index + 1
+                
                 
     def draw_node(self, node, x, y, r):
         ctx = self.canvas.getContext('2d')
