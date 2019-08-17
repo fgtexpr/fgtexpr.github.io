@@ -39,7 +39,7 @@ class DynamicNetwork:
     def __init__(self, dt):
         self._time = 0
         self.dt = dt
-        assert 'nodes' in self.__dict__()
+        assert 'nodes' in self.__dict__
     
     def step(self):
         for n in self.nodes:
@@ -81,7 +81,7 @@ class Renderer:
         self._ticks = 0
     
     def draw_nodes(self):
-        if 'position' not in self.net.nodes[0].__dict__():
+        if 'position' not in self.net.nodes[0].__dict__:
             self.draw_nodes_grid()
             return
         for n in self.net.nodes:
@@ -156,11 +156,10 @@ class Renderer:
         butt = html.BUTTON("update simulation")
         butt.bind("click", self.change_params_callback)
         self.container <= butt
-
+alert("ahhh")
 n = FixedLattice(lambda x : 2 - x, 0.1, 9)
 r = Renderer(n)
 r.draw_param_selector()
-alert("ahhh")
 r.update()
 # alert("debugg")
 # _timer = timer.set_interval(r.update, 10)
