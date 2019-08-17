@@ -57,7 +57,7 @@ class FixedLattice(DynamicNetwork):
             for j, m in enumerate(self.nodes):
                 dist = abs(n.position[0] - m.position[0]) + abs(n.position[1] - m.position[1])
                 if m != n and dist <= 2:
-                    kick_fnc = lambda x: 0.3/(dist + 1)
+                    kick_fnc = lambda x: 0.03/(dist + 1)
                     n.add_neighbor(m, kick_fnc)
         
         super(FixedLattice, self).__init__(dt)
@@ -131,7 +131,7 @@ class Renderer:
         self.clear_canvas()
         exec_string = "2 - x"
         def dxdt(x):
-            return eval(exec_string)
+            return eval("2-x")
         self.net = FixedLattice(
             dxdt,
             float(self.inputs['dt'].value),
@@ -158,7 +158,7 @@ class Renderer:
         butt = html.BUTTON("update simulation")
         butt.bind("click", self.change_params_callback)
         self.container <= butt
-
+alert("fgsdfgdfgsS")
 n = FixedLattice(lambda x : 2 - x, 0.01, 9)
 r = Renderer(n)
 r.draw_param_selector()
