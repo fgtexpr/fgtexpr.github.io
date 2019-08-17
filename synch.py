@@ -131,7 +131,7 @@ class Renderer:
         self.clear_canvas()
         exec_string = "2 - x"
         def dxdt(x):
-            return eval("2-x")
+            return 2 - x
         self.net = FixedLattice(
             dxdt,
             float(self.inputs['dt'].value),
@@ -158,7 +158,7 @@ class Renderer:
         butt = html.BUTTON("update simulation")
         butt.bind("click", self.change_params_callback)
         self.container <= butt
-alert("fgsdfgdfgsS")
+alert("fgsdfgdfffffffffgsS")
 n = FixedLattice(lambda x : 2 - x, 0.01, 9)
 r = Renderer(n)
 r.draw_param_selector()
