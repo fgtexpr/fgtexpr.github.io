@@ -157,8 +157,8 @@ class Renderer:
         self.container <= butt
 
 alert("bbhfcjvb")
-l = lambda x : eval("2 - x")
-alert("ASgerg")
+l = lambda x : eval("2 - x", globals = {'x': x})
+alert(eval("2 + 1"))
 alert(l)
 alert(l(2))
 n = FixedLattice(l, 0.01, 9)
