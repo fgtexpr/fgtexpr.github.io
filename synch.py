@@ -60,7 +60,7 @@ class FixedLattice(DynamicNetwork):
                     kick_fnc = lambda x: dist
                     n.add_neighbor(m, kick_fnc)
         
-        super.__init__(dt)
+        super(FixedLattice, self).__init__(dt)
 
 class Renderer:
     def __init__(self, network):
