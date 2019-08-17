@@ -120,7 +120,7 @@ class Renderer:
             self.canvas.width = self.canvas.width
             self.canvas.height = self.canvas.height
         self.clear_canvas()
-        self.draw_nodes_grid()
+        self.draw_nodes()
         
     def update(self):
         self.draw_canvas()
@@ -157,8 +157,8 @@ class Renderer:
         butt.bind("click", self.change_params_callback)
         self.container <= butt
 
-alert("ahhh!!!!!")
-n = FixedLattice(lambda x : 2 - x, 0.1, 9)
+alert("ahhh????")
+n = FixedLattice(lambda x : 2 - x, 0.01, 9)
 r = Renderer(n)
 r.draw_param_selector()
 _timer = timer.set_interval(r.update, 10)
