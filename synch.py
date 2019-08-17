@@ -158,6 +158,8 @@ class Renderer:
 
 alert("a!!!!??!!!")
 l = eval("lambda x : 2 - x")
+alert(l)
+alert(l(2))
 n = FixedLattice(l, 0.01, 9)
 r = Renderer(n)
 r.draw_param_selector()
