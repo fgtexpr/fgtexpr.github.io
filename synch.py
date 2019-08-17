@@ -64,14 +64,14 @@ class FixedLattice(DynamicNetwork):
 
 class Renderer:
     def __init__(self, network):
-        self.dx = sim.dt
+        self.dx = network.dt
         self.net = network
         self.canvas = html.CANVAS(id = 'canv', width = 600, height = 600)
         self.container = html.DIV()
         self.container <= self.canvas
         self.inputs = {}
         self.params = {
-            "dt": self.sim.dt,
+            "dt": self.net.dt,
             "dxdt": "lambda x : 2 - x",
             "n_nodes": len(self.net.nodes),
             "network": "fixedlattice"
@@ -89,7 +89,7 @@ class Renderer:
             self.draw_node(n, n.position[0] * canvas.width, n.position[1] * canvas.height, radius)
         
     def draw_nodes_grid(self):
-        n = len(self.sim.nodes)
+        n = len(self.net.nodes)
         
         m1 = math.ceil(math.sqrt(n))
         radius = self.canvas.width/(2*m1)
@@ -99,7 +99,7 @@ class Renderer:
         for i in range(m1):
             for j in range(m1):
                 if index < n:
-                    self.draw_node(self.sim.nodes[index], radius + i*radius*2, radius + j*radius*2, radius)
+                    self.draw_node(self.net.nodes[index], radius + i*radius*2, radius + j*radius*2, radius)
                 index = index + 1
                 
                 
