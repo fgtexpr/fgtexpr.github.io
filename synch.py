@@ -159,8 +159,7 @@ class Renderer:
         butt.bind("click", self.change_params_callback)
         self.container <= butt
 
-alert("SjgvjvjCSV")
-alert(foo(2))
+alert("SjgvjvjCSV!!!!")
 n = FixedLattice(lambda x : 2 - x, 0.01, 9)
 r = Renderer(n)
 r.draw_param_selector()
