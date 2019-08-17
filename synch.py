@@ -129,7 +129,7 @@ class Renderer:
     
     def change_params_callback(self, ev):
         self.clear_canvas()
-        exec_string = str(self.inputs['dxdt'].value)
+        exec_string = "2 - x"
         def dxdt(x):
             return eval(exec_string)
         self.net = FixedLattice(
@@ -159,7 +159,6 @@ class Renderer:
         butt.bind("click", self.change_params_callback)
         self.container <= butt
 
-alert("SjgvjvjCSV!!!!")
 n = FixedLattice(lambda x : 2 - x, 0.01, 9)
 r = Renderer(n)
 r.draw_param_selector()
