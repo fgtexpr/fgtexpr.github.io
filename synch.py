@@ -129,12 +129,14 @@ class Renderer:
     
     def change_params_callback(self, ev):
         self.clear_canvas()
+        alert(self.inputs['dxdt'].value)
+        alert(self.inputs['dt'].value)
+        alert(self.inputs['n_nodes'].value)
         self.net = FixedLattice(
             eval(self.inputs['dxdt'].value),
-            float(self.inputs['dt'].value), 
-            int(self.inputs["n_nodes"].value),
+            float(self.inputs['dt'].value),
+            int(self.inputs['n_nodes'].value)
         )
-        alert("SADGFGAS")
         self.canvas.width = 900
         self.canvas.height = 900
         global _timer
