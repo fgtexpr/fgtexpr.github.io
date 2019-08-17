@@ -156,8 +156,9 @@ class Renderer:
         butt.bind("click", self.change_params_callback)
         self.container <= butt
 
-alert("a!!!!??!!!")
+alert("bbb")
 l = eval("lambda x : 2 - x")
+alert("ASgerg")
 alert(l)
 alert(l(2))
 n = FixedLattice(l, 0.01, 9)
