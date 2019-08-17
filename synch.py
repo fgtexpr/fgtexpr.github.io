@@ -129,8 +129,12 @@ class Renderer:
     
     def change_params_callback(self, ev):
         self.clear_canvas()
+        exec_string = self.inputs['dxdt'].value
+        def dxdt(y):
+            x = y
+            return eval(exec_string)
         self.net = FixedLattice(
-            eval(self.inputs['dxdt'].value),
+            dxdt,
             float(self.inputs['dt'].value),
             int(self.inputs['n_nodes'].value)
         )
@@ -156,12 +160,11 @@ class Renderer:
         butt.bind("click", self.change_params_callback)
         self.container <= butt
 
-alert("bb")
-l = lambda x : eval("2 - x", locals = {'x': x})
-alert(eval("2 + x", locals = {'x', 2}))
-alert(l)
-alert(l(2))
-n = FixedLattice(l, 0.01, 9)
+alert("SDVCSV")
+def foo(x):
+    return eval("x + 2")
+alert(foo(2))
+n = FixedLattice(lambda x : 2 - x, 0.01, 9)
 r = Renderer(n)
 r.draw_param_selector()
 r.update()
