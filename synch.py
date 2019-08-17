@@ -157,7 +157,7 @@ class Renderer:
         self.container <= butt
 
 alert("a!???")
-n = FixedLattice(eval("lambda x : 2 - x"), 0.01, 9)
+n = FixedLattice(exec("lambda x : 2 - x"), 0.01, 9)
 r = Renderer(n)
 r.draw_param_selector()
 r.update()
