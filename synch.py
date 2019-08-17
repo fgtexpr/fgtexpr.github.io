@@ -50,7 +50,7 @@ class FixedLattice(DynamicNetwork):
     def __init__(self, dxdt, dt, n_nodes):
         self.nodes = [ Node(random.random(), dxdt, {}) for _ in range(n_nodes) ]
         for i, n in enumerate(self.nodes):
-            m = mathf.ceil( mathf.sqrt(n_nodes) )
+            m = math.ceil( math.sqrt(n_nodes) )
             n.position = ((i % m) / m, math.floor(i/m) / m)
         
         for i, n in enumerate(self.nodes):
