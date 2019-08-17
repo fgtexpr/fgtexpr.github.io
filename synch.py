@@ -4,83 +4,94 @@ import random
 from browser import document, html, alert
 from browser import timer
 
-
 class Node:
     def __init__(self, state, dxdt, neighbors):
-        # type: (real, (real) -> real, dict<Node, real>) -> None
+        # type: (float, (float) -> real, dict<Node, (float) -> float>) -> None
         self.state = state
         self.neighbors = neighbors
         self.dxdt = dxdt
         self._kicks = []
+        self._time = 0
         
-    def add_neighbor(self, n, e):
-        self.neighbors[n] = e
-        
+    def add_neighbor(self, n, weight_fcn):
+        # type: (Node, (float) -> float) -> None
+        self.neighbors[n] = weight_fcn
+    
     def add_kick(self, e):
-        # type: (real) -> None
+        # type: (float) -> None
         self._kicks.append(e)
     
     def kick_neighbors(self):
         # type: () => None
         if self.state >= 1:
             for n in self.neighbors:
-                n.add_kick(self.neighbors[n])
+                n.add_kick(self.neighbors[n](self._time))
             self.state = 0
-    def update(self, dt):
+    
+    def step(self, dt):
         # type: () => None
         self.state = self.state + dt*self.dxdt(self.state) + sum(self._kicks)
         self._kicks = []
         self.state = min(1, self.state)
-    
-class Simulation:
-    def __init__(self, dt, n_nodes, s0, lamb, eps):
-        self.S0 = s0
-        self.lamb = lamb
+        self._time += 1
+
+class DynamicNetwork:
+    def __init__(self, dt):
+        self._time = 0
         self.dt = dt
-        self.eps = eps
-        dxdt = lambda x: s0 - lamb*x
+        assert 'nodes' in self.__dict__()
+    
+    def step(self):
+        for n in self.nodes:
+            n.step(self.dt)
+            n.kick_neighbors()
+
+class FixedLattice(DynamicNetwork):
+    def __init__(self, dxdt, dt, n_nodes):
         self.nodes = [ Node(random.random(), dxdt, {}) for _ in range(n_nodes) ]
         for i, n in enumerate(self.nodes):
-            for j, m in enumerate(self.nodes):
-                if m != n:
-                    n.add_neighbor(m, eps/( (j + i*math.floor(math.sqrt(len(self.nodes)) ) + 1 ) ) )
+            m = mathf.ceil( mathf.sqrt(n_nodes) )
+            n.position = ((i % m) / m, math.floor(i/m) / m)
         
-    def update(self):
-        for n in self.nodes:
-            n.update(self.dt)
-            n.kick_neighbors()
-    
+        for i, n in enumerate(self.nodes):
+            for j, m in enumerate(self.nodes):
+                dist = abs(n.position[0] - m.position[0]) + abs(n.position[1] - m.position[1])
+                if m != n and dist <= 2:
+                    kick_fnc = lambda x: dist
+                    n.add_neighbor(m, kick_fnc)
+        
+        super.__init__(dt)
+
 class Renderer:
-    def __init__(self, sim):
+    def __init__(self, network):
         self.dx = sim.dt
-        self.sim = sim
+        self.net = network
         self.canvas = html.CANVAS(id = 'canv', width = 600, height = 600)
         self.container = html.DIV()
         self.container <= self.canvas
         self.inputs = {}
         self.params = {
             "dt": self.sim.dt,
-            "n_nodes": len(sim.nodes),
-            "S0": sim.S0,
-            "lamb": sim.lamb,
-            "kick_eps": sim.eps,
+            "dxdt": "lambda x : 2 - x",
+            "n_nodes": len(self.net.nodes),
+            "network": "fixedlattice"
         }
         document <= self.container
         self._destroy_frame_interval = 100
         self._ticks = 0
     
-    def draw_nodes_line(self):
-        n = len(self.sim.nodes)
-        radius = self.canvas.width/(2*n)
+    def draw_nodes(self):
+        if 'position' not in self.net.nodes[0].__dict__():
+            self.draw_nodes_grid()
+            return
+        for n in self.net.nodes:
+            radius = self.canvas.width/(2*math.ceil(math.sqrt(len(self.net.nodes))))
+            self.draw_node(n, n.position[0] * canvas.width, n.position[1] * canvas.height, radius)
         
-        for i, node in enumerate(self.sim.nodes):
-            self.draw_node(node, radius + i*radius*2, self.canvas.height/2, radius)
-    
     def draw_nodes_grid(self):
         n = len(self.sim.nodes)
         
-        
-        m1 = math.floor(math.sqrt(n))
+        m1 = math.ceil(math.sqrt(n))
         radius = self.canvas.width/(2*m1)
         
         index = 0
@@ -113,24 +124,22 @@ class Renderer:
         
     def update(self):
         self.draw_canvas()
-        self.sim.update()
+        self.net.step()
         self._ticks += 1
     
     def change_params_callback(self, ev):
         self.clear_canvas()
-        self.sim = Simulation(
+        self.net = FixedLattice(
+            eval(self.inputs['dxdt'].value),
             float(self.inputs['dt'].value), 
-            int(self.inputs["n_nodes"].value), 
-            float(self.inputs["S0"].value), 
-            float(self.inputs["lamb"].value), 
-            float(self.inputs["kick_eps"].value),
-            )
-        m = math.floor(math.sqrt(len(self.inputs['n_nodes'].value)))
-        self.canvas.width = m * 80
-        self.canvas.height = m * 80
+            int(self.inputs["n_nodes"].value),
+        )
+        
+        self.canvas.width = 900
+        self.canvas.height = 900
         global _timer
         timer.clear_interval(_timer)
-        _timer = timer.set_interval(self.update, 20*float(self.inputs['dt'].value))
+        _timer = timer.set_interval(self.update, 10*float(self.inputs['dt'].value))
         
     def draw_param_selector(self):
         # param_name, default_value pairs
@@ -148,9 +157,10 @@ class Renderer:
         butt.bind("click", self.change_params_callback)
         self.container <= butt
 
-s = Simulation(0.01, 10, 2, 1, 0.1)
-r = Renderer(s)
+n = FixedLattice(lambda x : 2 - x, 0.1, 9)
+r = Renderer(n)
 r.draw_param_selector()
-# r.update()
-alert("debugggg!!")
-_timer = timer.set_interval(r.update, 10)
+alert("ahhh")
+r.update()
+# alert("debugg")
+# _timer = timer.set_interval(r.update, 10)
