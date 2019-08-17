@@ -72,7 +72,7 @@ class Renderer:
         self.inputs = {}
         self.params = {
             "dt": self.net.dt,
-            "dxdt": "lambda x : 2 - x",
+            "dxdt": "2 - x",
             "n_nodes": len(self.net.nodes),
             "network": "fixedlattice"
         }
@@ -129,9 +129,8 @@ class Renderer:
     
     def change_params_callback(self, ev):
         self.clear_canvas()
-        exec_string = self.inputs['dxdt'].value
-        def dxdt(y):
-            x = y
+        exec_string = str(self.inputs['dxdt'].value)
+        def dxdt(x):
             return eval(exec_string)
         self.net = FixedLattice(
             dxdt,
@@ -160,9 +159,7 @@ class Renderer:
         butt.bind("click", self.change_params_callback)
         self.container <= butt
 
-alert("SDVCSV")
-def foo(x):
-    return eval("x + 2")
+alert("SjgvjvjCSV")
 alert(foo(2))
 n = FixedLattice(lambda x : 2 - x, 0.01, 9)
 r = Renderer(n)
