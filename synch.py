@@ -134,7 +134,7 @@ class Renderer:
             float(self.inputs['dt'].value), 
             int(self.inputs["n_nodes"].value),
         )
-        
+        alert("SADGFGAS")
         self.canvas.width = 900
         self.canvas.height = 900
         global _timer
@@ -158,7 +158,7 @@ class Renderer:
         self.container <= butt
 
 alert("a!!!!")
-n = FixedLattice(lambda x : 2 - x, 0.01, 9)
+n = FixedLattice(lambda x : 2 - x, 0.01, 49)
 r = Renderer(n)
 r.draw_param_selector()
 r.update()
