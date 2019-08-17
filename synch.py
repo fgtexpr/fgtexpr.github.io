@@ -156,9 +156,9 @@ class Renderer:
         butt.bind("click", self.change_params_callback)
         self.container <= butt
 
-alert("bbhfcjfasdfsdvb")
-l = lambda x : eval("2 - x", globals = {'x': x})
-alert(eval("2 + x"), globals = {'x', 2})
+alert("bbhfcjfasdfdsfsfdsfssdfsfsdvb")
+l = lambda x : eval("2 - x", locals = {'x': x})
+alert(eval("2 + x"), locals = {'x', 2})
 alert(l)
 alert(l(2))
 n = FixedLattice(l, 0.01, 9)
