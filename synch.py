@@ -86,7 +86,7 @@ class Renderer:
             return
         for n in self.net.nodes:
             radius = self.canvas.width/(2*math.ceil(math.sqrt(len(self.net.nodes))))
-            self.draw_node(n, n.position[0] * canvas.width, n.position[1] * canvas.height, radius)
+            self.draw_node(n, n.position[0] * self.canvas.width, n.position[1] * self.canvas.height, radius)
         
     def draw_nodes_grid(self):
         n = len(self.net.nodes)
@@ -157,7 +157,7 @@ class Renderer:
         butt.bind("click", self.change_params_callback)
         self.container <= butt
 
-alert("ahhh????")
+alert("ahhh????!!!")
 n = FixedLattice(lambda x : 2 - x, 0.01, 9)
 r = Renderer(n)
 r.draw_param_selector()
