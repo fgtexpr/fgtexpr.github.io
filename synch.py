@@ -160,10 +160,9 @@ class Renderer:
         butt = html.BUTTON("update simulation")
         butt.bind("click", self.change_params_callback)
         self.container <= butt
-alert("fgsdfgdffffffbgbfgbfffgsS???")
+
 n = FixedLattice(lambda x : 2 - x, 0.01, 9)
 r = Renderer(n)
 r.draw_param_selector()
 r.update()
-alert(len(n.nodes[0].neighbors))
 _timer = timer.set_interval(r.update, 10)
