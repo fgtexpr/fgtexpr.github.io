@@ -56,8 +56,8 @@ class FixedLattice(DynamicNetwork):
         for i, n in enumerate(self.nodes):
             for j, m in enumerate(self.nodes):
                 dist = abs(n.position[0] - m.position[0]) + abs(n.position[1] - m.position[1])
-                if m != n and dist <= 2:
-                    kick_fnc = lambda x: (math.cos(x) + 2 )*0.02/(dist + 1)
+                if (m != n and dist <= 2) or i == 0:
+                    kick_fnc = lambda x: (math.cos(x) + 2 )*0.02/(dist + 1) if i != 0 else  (math.cos(x + 6.28) + 2)
                     n.add_neighbor(m, kick_fnc)
         m = math.ceil(math.sqrt(n_nodes))
         for n in self.nodes:
@@ -161,7 +161,7 @@ class Renderer:
         butt.bind("click", self.change_params_callback)
         self.container <= butt
 
-alert('debug!!!!')
+alert('debug!!!!????')
 n = FixedLattice(lambda x : 2 - x, 0.01, 9)
 r = Renderer(n)
 r.draw_param_selector()
