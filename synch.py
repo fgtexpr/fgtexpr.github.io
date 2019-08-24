@@ -49,6 +49,7 @@ class DynamicNetwork:
 class FixedLattice(DynamicNetwork):
     def __init__(self, dxdt, dt, n_nodes):
         self.nodes = [ Node(random.random(), dxdt, {}) for _ in range(n_nodes) ]
+        self.nodes[0].state = 0.25
         for i, n in enumerate(self.nodes):
             m = math.ceil( math.sqrt(n_nodes) )
             n.position = ((i % m),math.floor(i/m))
@@ -161,7 +162,7 @@ class Renderer:
         butt.bind("click", self.change_params_callback)
         self.container <= butt
 
-alert('debug!!!!????!!!!???')
+alert('debug!!!!????!!!!???!!!!')
 n = FixedLattice(lambda x : 2 - x, 0.01, 9)
 r = Renderer(n)
 r.draw_param_selector()
