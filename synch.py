@@ -68,7 +68,7 @@ class Renderer:
     def __init__(self, network):
         self.dx = network.dt
         self.net = network
-        self.canvas = html.CANVAS(id = 'canv', width = 600, height = 600)
+        self.canvas = html.CANVAS(id = 'canv', width = 1000, height = 1000)
         self.container = html.DIV()
         self.container <= self.canvas
         self.inputs = {}
@@ -87,7 +87,7 @@ class Renderer:
             self.draw_nodes_grid()
             return
         for n in self.net.nodes:
-            radius = self.canvas.width/(1.5*math.ceil(math.sqrt(len(self.net.nodes))))
+            radius = self.canvas.width/(2*math.ceil(math.sqrt(len(self.net.nodes))))
             self.draw_node(n, n.position[0] * self.canvas.width, n.position[1] * self.canvas.height, radius)
         
     def draw_nodes_grid(self):
@@ -161,7 +161,7 @@ class Renderer:
         butt.bind("click", self.change_params_callback)
         self.container <= butt
 
-alert('debugggg')
+alert('debug!!!!')
 n = FixedLattice(lambda x : 2 - x, 0.01, 9)
 r = Renderer(n)
 r.draw_param_selector()
