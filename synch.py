@@ -33,7 +33,7 @@ class Node:
         self.state = self.state + dt*self.dxdt(self.state) + sum(self._kicks)
         self._kicks = []
         self.state = min(1, self.state)
-        self._time += 1
+        self._time += dt
 
 class DynamicNetwork:
     def __init__(self, dt):
